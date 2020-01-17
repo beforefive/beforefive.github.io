@@ -84,4 +84,4 @@ deploy:
 backup:
     type: git
     repository:
-       github: git@github.com:beforefive/beforefive.github.io.git,backup
+       github: https://github.com/beforefive/beforefive.github.io.git,backup
