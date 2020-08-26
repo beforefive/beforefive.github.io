@@ -1,0 +1,916 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Wlogo.png">
+  <link rel="icon" type="image/png" href="/img/Wlogo.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="beforefive">
+  <meta name="keywords" content="">
+  <title>MyBatis入门三 - beforefive&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>BeforeFvie</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/Blue.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-08-26 23:04" pubdate>
+      2020年8月26日 晚上
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      49
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">MyBatis入门三</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <p>MyBatis 的事务控制，动态 SQL 语句与多表查询。</p>
+<a id="more"></a>
+
+<h1 id="1-MyBatis-的事务控制"><a href="#1-MyBatis-的事务控制" class="headerlink" title="1 MyBatis 的事务控制"></a>1 MyBatis 的事务控制</h1><p>在 MyBatis 中事务不是自动提交的主要原因是从连接池取出连接，会调<code>connection.setAutocommit(false)</code>方法,使得在默认情况下，需要手动提交事务。设置自动事务提交的方法：创建 SqlSession 对象时使用<code>sqlSessionFactory.openSession(true)</code>方法实现事务的自动提交。</p>
+<hr>
+<h1 id="2-MyBatis-的动态-SQL-语句"><a href="#2-MyBatis-的动态-SQL-语句" class="headerlink" title="2 MyBatis 的动态 SQL 语句"></a>2 MyBatis 的动态 SQL 语句</h1><h2 id="2-1-lt-if-gt-标签"><a href="#2-1-lt-if-gt-标签" class="headerlink" title="2.1 &lt;if&gt; 标签"></a>2.1 &lt;if&gt; 标签</h2><h3 id="2-1-1-持久层-Dao-接口"><a href="#2-1-1-持久层-Dao-接口" class="headerlink" title="2.1.1 持久层 Dao 接口"></a>2.1.1 持久层 Dao 接口</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-function">List&lt;User&gt; <span class="hljs-title">findByUser</span><span class="hljs-params">(User user)</span></span>;</code></pre></div>
+
+<h3 id="2-1-2-映射配置"><a href="#2-1-2-映射配置" class="headerlink" title="2.1.2 映射配置"></a>2.1.2 映射配置</h3><div class="hljs"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;findByUser&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;user&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;user&quot;</span>&gt;</span>
+    SELECT * from user USER WHERE 1 = 1
+    <span class="hljs-comment">&lt;!-- test属性中写对象属性名--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;username != null and username != &#x27;&#x27; &quot;</span>&gt;</span>
+        AND username LIKE #&#123;username&#125;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;address != null&quot;</span>&gt;</span>
+        AND address like #&#123;address&#125;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></code></pre></div>
+
+<h3 id="2-1-3-测试"><a href="#2-1-3-测试" class="headerlink" title="2.1.3 测试"></a>2.1.3 测试</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testFindByUser</span><span class="hljs-params">()</span></span>&#123;
+    User u = <span class="hljs-keyword">new</span> User();
+    u.setUsername(<span class="hljs-string">&quot;%甲%&quot;</span>);
+    u.setAddress(<span class="hljs-string">&quot;%北&quot;</span>);
+    List&lt;User&gt; users = userDao.findByUser(u);
+    <span class="hljs-keyword">for</span> (User user : users) &#123;
+        System.out.println(user);
+    &#125;
+&#125;</code></pre></div>
+
+<p>返回结果</p>
+<p><code>User&#123;id=41, username=&#39;甲&#39;, birthday=Tue Feb 27 17:47:08 CST 2018, sex=&#39;男&#39;, address=&#39;北京&#39;&#125;</code></p>
+<p>其中返回结果显示的 SQL 语句为<code>SELECT * from user USER WHERE 1 = 1 AND username LIKE ? AND address like ?</code></p>
+<hr>
+<h2 id="2-2-lt-where-gt-标签"><a href="#2-2-lt-where-gt-标签" class="headerlink" title="2.2 &lt;where&gt; 标签"></a>2.2 &lt;where&gt; 标签</h2><h3 id="2-2-1-映射配置"><a href="#2-2-1-映射配置" class="headerlink" title="2.2.1 映射配置"></a>2.2.1 映射配置</h3><div class="hljs"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">sql</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;defaultSql&quot;</span>&gt;</span>
+    SELECT * FROM USER
+<span class="hljs-tag">&lt;/<span class="hljs-name">sql</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;findByUser&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;user&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;user&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">refid</span>=<span class="hljs-string">&quot;defaultSql&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">where</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;username != null and username != &#x27;&#x27;&quot;</span> &gt;</span>
+            and username like #&#123;username&#125;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;address != null&quot;</span>&gt;</span>
+            and address like #&#123;address&#125;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">where</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></code></pre></div>
+
+
+
+<h3 id="2-2-2-测试"><a href="#2-2-2-测试" class="headerlink" title="2.2. 2 测试"></a>2.2. 2 测试</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testFindByUser</span><span class="hljs-params">()</span></span>&#123;
+    User u = <span class="hljs-keyword">new</span> User();
+    u.setUsername(<span class="hljs-string">&quot;%甲%&quot;</span>);
+    u.setAddress(<span class="hljs-string">&quot;%北&quot;</span>);
+    List&lt;User&gt; users = userDao.findByUser(u);
+    <span class="hljs-keyword">for</span> (User user : users) &#123;
+        System.out.println(user);
+    &#125;
+&#125;</code></pre></div>
+
+<p>返回结果</p>
+<p><code>User&#123;id=41, username=&#39;甲&#39;, birthday=Tue Feb 27 17:47:08 CST 2018, sex=&#39;男&#39;, address=&#39;北京&#39;&#125;</code></p>
+<p>返回结果中的 SQL 语句</p>
+<p><code>SELECT * FROM USER WHERE username like ? and address like ?</code></p>
+<hr>
+<h2 id="2-3-lt-foreach-gt-标签"><a href="#2-3-lt-foreach-gt-标签" class="headerlink" title="2.3 &lt;foreach&gt; 标签"></a>2.3 &lt;foreach&gt; 标签</h2><p>查询需要传入多个用户信息时，需要封装参数，进行参数传递。例如：<code>SELECT * FROM USERS WHERE username LIKE &#39;%张%&#39; AND id IN (10,89,16)</code></p>
+<h3 id="2-3-1-QueryIdVo-封装类"><a href="#2-3-1-QueryIdVo-封装类" class="headerlink" title="2.3.1 QueryIdVo 封装类"></a>2.3.1 QueryIdVo 封装类</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">QueryIdVo</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span> </span>&#123;
+    <span class="hljs-keyword">private</span> List&lt;Integer&gt; ids;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">getIds</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">return</span> ids;
+    &#125;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setIds</span><span class="hljs-params">(List&lt;Integer&gt; ids)</span> </span>&#123;
+        <span class="hljs-keyword">this</span>.ids = ids;
+    &#125;
+&#125;</code></pre></div>
+
+<h3 id="2-3-2-持久层-Dao-接口"><a href="#2-3-2-持久层-Dao-接口" class="headerlink" title="2.3.2  持久层 Dao 接口"></a>2.3.2  持久层 Dao 接口</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-function">List&lt;User&gt; <span class="hljs-title">findInIds</span><span class="hljs-params">(QueryIdVo vo)</span></span>;</code></pre></div>
+
+<h3 id="2-3-3-映射配置"><a href="#2-3-3-映射配置" class="headerlink" title="2.3.3 映射配置"></a>2.3.3 映射配置</h3><div class="hljs"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;findInIds&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;user&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;cn.pine.domain.QueryIdVo&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">refid</span>=<span class="hljs-string">&quot;defaultSql&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">where</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;ids != null and ids.size() &gt; 0&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">foreach</span> <span class="hljs-attr">collection</span>=<span class="hljs-string">&quot;ids&quot;</span> <span class="hljs-attr">open</span>=<span class="hljs-string">&quot;id in (&quot;</span> <span class="hljs-attr">close</span>=<span class="hljs-string">&quot;)&quot;</span> <span class="hljs-attr">item</span>=<span class="hljs-string">&quot;uid&quot;</span> <span class="hljs-attr">separator</span>=<span class="hljs-string">&quot;,&quot;</span>&gt;</span>
+                #&#123;uid&#125;
+            <span class="hljs-tag">&lt;/<span class="hljs-name">foreach</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">where</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></code></pre></div>
+
+<h3 id="2-3-4-测试"><a href="#2-3-4-测试" class="headerlink" title="2.3.4 测试"></a>2.3.4 测试</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testFindByInIds</span><span class="hljs-params">()</span></span>&#123;
+    QueryIdVo vo = <span class="hljs-keyword">new</span> QueryIdVo();
+    List&lt;Integer&gt; ids = <span class="hljs-keyword">new</span> ArrayList&lt;Integer&gt;();
+    ids.add(<span class="hljs-number">41</span>);
+    ids.add(<span class="hljs-number">45</span>);
+    ids.add(<span class="hljs-number">42</span>);
+    vo.setIds(ids);
+    List&lt;User&gt; users = userDao.findInIds(vo);
+    <span class="hljs-keyword">for</span> (User user : users) &#123;
+        System.out.println(user);
+    &#125;
+&#125;</code></pre></div>
+
+<p>返回结果</p>
+<div class="hljs"><pre><code class="hljs routeros">User&#123;<span class="hljs-attribute">id</span>=41, <span class="hljs-attribute">username</span>=<span class="hljs-string">&#x27;王一&#x27;</span>, <span class="hljs-attribute">birthday</span>=Tue Feb 27 17:47:08 CST 2018, <span class="hljs-attribute">sex</span>=<span class="hljs-string">&#x27;男&#x27;</span>, <span class="hljs-attribute">address</span>=<span class="hljs-string">&#x27;北京&#x27;</span>&#125;
+User&#123;<span class="hljs-attribute">id</span>=42, <span class="hljs-attribute">username</span>=<span class="hljs-string">&#x27;张三&#x27;</span>, <span class="hljs-attribute">birthday</span>=Fri Mar 02 15:09:37 CST 2018, <span class="hljs-attribute">sex</span>=<span class="hljs-string">&#x27;女&#x27;</span>, <span class="hljs-attribute">address</span>=<span class="hljs-string">&#x27;上海&#x27;</span>&#125;
+User&#123;<span class="hljs-attribute">id</span>=45, <span class="hljs-attribute">username</span>=<span class="hljs-string">&#x27;李四&#x27;</span>, <span class="hljs-attribute">birthday</span>=Sun Mar 04 12:04:06 CST 2018, <span class="hljs-attribute">sex</span>=<span class="hljs-string">&#x27;男&#x27;</span>, <span class="hljs-attribute">address</span>=<span class="hljs-string">&#x27;深圳&#x27;</span>&#125;
+返回的SQL语句
+SELECT * <span class="hljs-keyword">FROM</span><span class="hljs-built_in"> USER </span>WHERE id <span class="hljs-keyword">in</span> ( ? , ? , ? )</code></pre></div>
+
+<hr>
+<h1 id="3-MyBatis-多表查询"><a href="#3-MyBatis-多表查询" class="headerlink" title="3 MyBatis 多表查询"></a>3 MyBatis 多表查询</h1><h2 id="3-1-多对一查询"><a href="#3-1-多对一查询" class="headerlink" title="3.1 多对一查询"></a>3.1 多对一查询</h2><p>​    以用户（User）和账户（Account）为模型，一个用户可以拥有多个账户，从账户信息出发关联查询用户信息为多对一查询，但是本质上是一对一查询，因为一个账户只能对应一个用户。而从用户出发，查新用户下的账户信息为一对多查询，因为一个用户对应多个账户。</p>
+<h3 id="3-1-1-以账户关联查询用户方式一"><a href="#3-1-1-以账户关联查询用户方式一" class="headerlink" title="3.1.1 以账户关联查询用户方式一"></a>3.1.1 以账户关联查询用户方式一</h3><h4 id="3-1-1-1-账户信息实体类"><a href="#3-1-1-1-账户信息实体类" class="headerlink" title="3.1.1.1 账户信息实体类"></a>3.1.1.1 账户信息实体类</h4><div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">//省略getter，setter和toString方法</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Account</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span> </span>&#123;
+    <span class="hljs-keyword">private</span> Integer id;
+    <span class="hljs-keyword">private</span> Integer uid;
+    <span class="hljs-keyword">private</span> Double money;
+&#125;</code></pre></div>
+
+<h4 id="3-1-1-2-AccountUser-类"><a href="#3-1-1-2-AccountUser-类" class="headerlink" title="3.1.1.2 AccountUser 类"></a>3.1.1.2 AccountUser 类</h4><p>定义 AccountUser 类来封装关联查询结果，要求包含账户信息与用户信息。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">//省略getter和setter方法</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AccoutUser</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Account</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span> </span>&#123;
+    <span class="hljs-keyword">private</span> String username;
+    <span class="hljs-keyword">private</span> String address;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.toString() + <span class="hljs-string">&quot;AccoutUser&#123;&quot;</span> +
+                <span class="hljs-string">&quot;username=&#x27;&quot;</span> + username + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +
+                <span class="hljs-string">&quot;, address=&#x27;&quot;</span> + address + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +
+                <span class="hljs-string">&#x27;&#125;&#x27;</span>;
+    &#125;
+&#125;</code></pre></div>
+
+<h4 id="3-1-1-3-账户的持久层-Dao-接口"><a href="#3-1-1-3-账户的持久层-Dao-接口" class="headerlink" title="3.1.1.3 账户的持久层 Dao 接口"></a>3.1.1.3 账户的持久层 Dao 接口</h4><div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IAccountDao</span> </span>&#123;
+    <span class="hljs-function">List&lt;AccoutUser&gt; <span class="hljs-title">findAll</span><span class="hljs-params">()</span></span>;
+&#125;</code></pre></div>
+
+<h4 id="3-1-1-4-AccountDao-xml-映射配置"><a href="#3-1-1-4-AccountDao-xml-映射配置" class="headerlink" title="3.1.1.4 AccountDao.xml 映射配置"></a>3.1.1.4 AccountDao.xml 映射配置</h4><div class="hljs"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">mapper</span></span>
+<span class="hljs-meta">        <span class="hljs-meta-keyword">PUBLIC</span> <span class="hljs-meta-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span>
+<span class="hljs-meta">        <span class="hljs-meta-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">namespace</span>=<span class="hljs-string">&quot;cn.pine.dao.IAccountDao&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;findAll&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;cn.pine.domain.AccoutUser&quot;</span>&gt;</span>
+        SELECT a.*,u.username,u.address FROM account a, user u WHERE a.uid = u.id;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">mapper</span>&gt;</span></code></pre></div>
+
+<p>3.1.1.6 测试</p>
+<p>Acoount表：</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>uid</th>
+<th>money</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>46</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>45</td>
+<td>1000</td>
+</tr>
+<tr>
+<td>3</td>
+<td>46</td>
+<td>2000</td>
+</tr>
+</tbody></table>
+<p>user表：</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>username</th>
+<th>birthday</th>
+<th>sex</th>
+<th>address</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>41</td>
+<td>王一</td>
+<td>27/2/2018 17:47:08</td>
+<td>男</td>
+<td>北京</td>
+</tr>
+<tr>
+<td>42</td>
+<td>张三</td>
+<td>2/3/2018 15:09:37</td>
+<td>女</td>
+<td>上海</td>
+</tr>
+<tr>
+<td>43</td>
+<td>张五</td>
+<td>4/3/2018 11:34:34</td>
+<td>女</td>
+<td>广州</td>
+</tr>
+<tr>
+<td>45</td>
+<td>李四</td>
+<td>4/3/2018 12:04:06</td>
+<td>男</td>
+<td>深圳</td>
+</tr>
+<tr>
+<td>46</td>
+<td>赵六</td>
+<td>7/3/2018 17:37:26</td>
+<td>男</td>
+<td>杭州</td>
+</tr>
+<tr>
+<td>48</td>
+<td>钱七</td>
+<td>8/3/2018 11:44:00</td>
+<td>女</td>
+<td>成都</td>
+</tr>
+</tbody></table>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testFindAll</span><span class="hljs-params">()</span></span>&#123;
+    List&lt;AccoutUser&gt; accoutUsers = accountDao.findAll();
+    <span class="hljs-keyword">for</span> (AccoutUser accoutUser : accoutUsers) &#123;
+        System.out.println(accoutUser);
+    &#125;
+&#125;</code></pre></div>
+
+<p>返回结果</p>
+<div class="hljs"><pre><code class="hljs routeros">Account&#123;<span class="hljs-attribute">id</span>=1, <span class="hljs-attribute">uid</span>=46, <span class="hljs-attribute">money</span>=1000.0&#125;AccoutUser&#123;<span class="hljs-attribute">username</span>=<span class="hljs-string">&#x27;赵六&#x27;</span>, <span class="hljs-attribute">address</span>=<span class="hljs-string">&#x27;杭州&#x27;</span>&#125;
+Account&#123;<span class="hljs-attribute">id</span>=2, <span class="hljs-attribute">uid</span>=45, <span class="hljs-attribute">money</span>=1000.0&#125;AccoutUser&#123;<span class="hljs-attribute">username</span>=<span class="hljs-string">&#x27;李四&#x27;</span>, <span class="hljs-attribute">address</span>=<span class="hljs-string">&#x27;深圳&#x27;</span>&#125;
+Account&#123;<span class="hljs-attribute">id</span>=3, <span class="hljs-attribute">uid</span>=46, <span class="hljs-attribute">money</span>=2000.0&#125;AccoutUser&#123;<span class="hljs-attribute">username</span>=<span class="hljs-string">&#x27;赵六&#x27;</span>, <span class="hljs-attribute">address</span>=<span class="hljs-string">&#x27;杭州&#x27;</span>&#125;</code></pre></div>
+
+<h3 id="3-1-2-以账户关联查询用户方式二"><a href="#3-1-2-以账户关联查询用户方式二" class="headerlink" title="3.1.2 以账户关联查询用户方式二"></a>3.1.2 以账户关联查询用户方式二</h3><p>通过在 Account 类中加入 User 属性，Dao 接口方法返回值修改为<code>List&lt;Acoount&gt;</code>。</p>
+<p>最后在映射配置中通过 <code>resultMap</code>建立对应关系，如下：</p>
+<div class="hljs"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">resultMap</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;account&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;accountMap&quot;</span>&gt;</span> 
+    <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;aid&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;id&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;uid&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;uid&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;money&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;money&quot;</span>/&gt;</span>
+    <span class="hljs-comment">&lt;!-- 它是用于指定从表方的引用实体属性的 --&gt;</span> 
+    <span class="hljs-tag">&lt;<span class="hljs-name">association</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;user&quot;</span> <span class="hljs-attr">javaType</span>=<span class="hljs-string">&quot;user&quot;</span>&gt;</span> 
+        <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;id&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;username&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;username&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;sex&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;sex&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;birthday&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;birthday&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;address&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;address&quot;</span>/&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-name">association</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">resultMap</span>&gt;</span> 
+<span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;findAll&quot;</span> <span class="hljs-attr">resultMap</span>=<span class="hljs-string">&quot;accountMap&quot;</span>&gt;</span>
+	select u.*,a.id as aid,a.uid,a.money from account a,user u where a.uid =u.id;
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></code></pre></div>
+
+<hr>
+<h2 id="3-2-一对多查询"><a href="#3-2-一对多查询" class="headerlink" title="3.2 一对多查询"></a>3.2 一对多查询</h2><p>查询用户信息及其关联的账户信息，为一对多查询。（使用做外链接，因为可能有的用户没有账户信息）</p>
+<h3 id="3-2-1-User-类中加入List-lt-Account-gt-属性"><a href="#3-2-1-User-类中加入List-lt-Account-gt-属性" class="headerlink" title="3.2.1 User 类中加入List&lt;Account&gt;属性"></a>3.2.1 User 类中加入<code>List&lt;Account&gt;</code>属性</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">//省略了getter，setter和toString方法</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span> </span>&#123;
+    <span class="hljs-keyword">private</span> Integer id;
+    <span class="hljs-keyword">private</span> String username;
+    <span class="hljs-keyword">private</span> Date birthday;
+    <span class="hljs-keyword">private</span> String sex;
+    <span class="hljs-keyword">private</span> String address;
+    <span class="hljs-keyword">private</span> List&lt;Account&gt; accounts;
+&#125;</code></pre></div>
+
+<h3 id="3-2-2-用户持久层-Dao-接口加入查询方法"><a href="#3-2-2-用户持久层-Dao-接口加入查询方法" class="headerlink" title="3.2.2 用户持久层 Dao 接口加入查询方法"></a>3.2.2 用户持久层 Dao 接口加入查询方法</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-function">List&lt;User&gt; <span class="hljs-title">findAllUserAccount</span><span class="hljs-params">()</span></span>;</code></pre></div>
+
+<h3 id="3-2-3-映射配置"><a href="#3-2-3-映射配置" class="headerlink" title="3.2.3 映射配置"></a>3.2.3 映射配置</h3><div class="hljs"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">resultMap</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;userMap&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;user&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;id&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;username&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;username&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;address&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;address&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;sex&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;sex&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;birthday&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;birthday&quot;</span>/&gt;</span>
+    <span class="hljs-comment">&lt;!-- collection 定义账户信息</span>
+<span class="hljs-comment">		property 关联查询User对象的属性</span>
+<span class="hljs-comment">		ofType 指定List中的对象类型--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">collection</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;accounts&quot;</span> <span class="hljs-attr">ofType</span>=<span class="hljs-string">&quot;cn.pine.domain.Account&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;aid&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;id&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;uid&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;uid&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;money&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;money&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">collection</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">resultMap</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;findAllUserAccount&quot;</span> <span class="hljs-attr">resultMap</span>=<span class="hljs-string">&quot;userMap&quot;</span>&gt;</span>
+    SELECT u.*, a.id as aid, a.uid, a.money FROM USER u LEFT OUTER JOIN account a on u.id=a.uid
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></code></pre></div>
+
+<h3 id="3-2-4-测试"><a href="#3-2-4-测试" class="headerlink" title="3.2.4  测试"></a>3.2.4  测试</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testFindAllUserAccount</span><span class="hljs-params">()</span></span>&#123;
+    List&lt;User&gt; users = userDao.findAllUserAccount();
+    <span class="hljs-keyword">for</span> (User user : users) &#123;
+        System.out.println(<span class="hljs-string">&quot;------每个用户的内容----------&quot;</span>);
+        System.out.println(user);
+        System.out.println(user.getAccounts());
+    &#125;
+&#125;
+&#125;</code></pre></div>
+
+<p>返回结果</p>
+<div class="hljs"><pre><code class="hljs routeros">------每个用户的内容----------
+User&#123;<span class="hljs-attribute">id</span>=41, <span class="hljs-attribute">username</span>=<span class="hljs-string">&#x27;王一&#x27;</span>, <span class="hljs-attribute">birthday</span>=Tue Feb 27 17:47:08 CST 2018, <span class="hljs-attribute">sex</span>=<span class="hljs-string">&#x27;男&#x27;</span>, <span class="hljs-attribute">address</span>=<span class="hljs-string">&#x27;北京&#x27;</span>&#125;
+[]
+------每个用户的内容----------
+User&#123;<span class="hljs-attribute">id</span>=42, <span class="hljs-attribute">username</span>=<span class="hljs-string">&#x27;张三&#x27;</span>, <span class="hljs-attribute">birthday</span>=Fri Mar 02 15:09:37 CST 2018, <span class="hljs-attribute">sex</span>=<span class="hljs-string">&#x27;女&#x27;</span>, <span class="hljs-attribute">address</span>=<span class="hljs-string">&#x27;上海&#x27;</span>&#125;
+[]
+------每个用户的内容----------
+User&#123;<span class="hljs-attribute">id</span>=43, <span class="hljs-attribute">username</span>=<span class="hljs-string">&#x27;张五&#x27;</span>, <span class="hljs-attribute">birthday</span>=Sun Mar 04 11:34:34 CST 2018, <span class="hljs-attribute">sex</span>=<span class="hljs-string">&#x27;女&#x27;</span>, <span class="hljs-attribute">address</span>=<span class="hljs-string">&#x27;广州&#x27;</span>&#125;
+[]
+------每个用户的内容----------
+User&#123;<span class="hljs-attribute">id</span>=45, <span class="hljs-attribute">username</span>=<span class="hljs-string">&#x27;李四&#x27;</span>, <span class="hljs-attribute">birthday</span>=Sun Mar 04 12:04:06 CST 2018, <span class="hljs-attribute">sex</span>=<span class="hljs-string">&#x27;男&#x27;</span>, <span class="hljs-attribute">address</span>=<span class="hljs-string">&#x27;深圳&#x27;</span>&#125;
+[Account&#123;<span class="hljs-attribute">id</span>=2, <span class="hljs-attribute">uid</span>=45, <span class="hljs-attribute">money</span>=1000.0&#125;]
+------每个用户的内容----------
+User&#123;<span class="hljs-attribute">id</span>=46, <span class="hljs-attribute">username</span>=<span class="hljs-string">&#x27;赵六&#x27;</span>, <span class="hljs-attribute">birthday</span>=Wed Mar 07 17:37:26 CST 2018, <span class="hljs-attribute">sex</span>=<span class="hljs-string">&#x27;男&#x27;</span>, <span class="hljs-attribute">address</span>=<span class="hljs-string">&#x27;杭州&#x27;</span>&#125;
+[Account&#123;<span class="hljs-attribute">id</span>=1, <span class="hljs-attribute">uid</span>=46, <span class="hljs-attribute">money</span>=1000.0&#125;, Account&#123;<span class="hljs-attribute">id</span>=3, <span class="hljs-attribute">uid</span>=46, <span class="hljs-attribute">money</span>=2000.0&#125;]
+------每个用户的内容----------
+User&#123;<span class="hljs-attribute">id</span>=48, <span class="hljs-attribute">username</span>=<span class="hljs-string">&#x27;钱七&#x27;</span>, <span class="hljs-attribute">birthday</span>=Thu Mar 08 11:44:00 CST 2018, <span class="hljs-attribute">sex</span>=<span class="hljs-string">&#x27;女&#x27;</span>, <span class="hljs-attribute">address</span>=<span class="hljs-string">&#x27;成都&#x27;</span>&#125;
+[]</code></pre></div>
+
+<hr>
+<h2 id="3-3-多对多查询"><a href="#3-3-多对多查询" class="headerlink" title="3.3 多对多查询"></a>3.3 多对多查询</h2><h3 id="3-3-1-用户与角色的关系模型"><a href="#3-3-1-用户与角色的关系模型" class="headerlink" title="3.3.1  用户与角色的关系模型"></a>3.3.1  用户与角色的关系模型</h3><p>一个角色（Role）可以对应多个用户，一个用户（User）可对应多个角色，形成多对多关系。</p>
+<p>通过查询角色关联查询所需要的 SQL 语句：</p>
+<div class="hljs"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span>
+	 r.*,u.id uid,
+ 	u.username username,
+ 	u.birthday birthday,
+	 u.sex sex,
+	 u.address address
+<span class="hljs-keyword">FROM</span> 
+ 	<span class="hljs-keyword">ROLE</span> r
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> 
+ 	USER_ROLE ur
+	<span class="hljs-keyword">ON</span> ( r.id = ur.rid)
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span>
+ 	<span class="hljs-keyword">USER</span> u
+<span class="hljs-keyword">ON</span> (ur.uid = u.id);</code></pre></div>
+
+<h3 id="4-1-2-角色实体类"><a href="#4-1-2-角色实体类" class="headerlink" title="4.1.2 角色实体类"></a>4.1.2 角色实体类</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">//省略getter,setter,toString方法</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Role</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span> </span>&#123;
+    <span class="hljs-keyword">private</span> Integer roleId;
+    <span class="hljs-keyword">private</span> String roleName;
+    <span class="hljs-keyword">private</span> String roleDesc;
+    <span class="hljs-keyword">private</span> List&lt;User&gt; users;
+&#125;</code></pre></div>
+
+<h3 id="4-1-3-角色持久层-Dao-接口"><a href="#4-1-3-角色持久层-Dao-接口" class="headerlink" title="4.1.3 角色持久层  Dao 接口"></a>4.1.3 角色持久层  Dao 接口</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IRoleDao</span> </span>&#123;
+    <span class="hljs-function">List&lt;Role&gt; <span class="hljs-title">findAll</span><span class="hljs-params">()</span></span>;
+&#125;</code></pre></div>
+
+<h3 id="4-1-4-映射配置"><a href="#4-1-4-映射配置" class="headerlink" title="4.1.4 映射配置"></a>4.1.4 映射配置</h3><div class="hljs"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">resultMap</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;roleMap&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;cn.pine.domain.Role&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;rid&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;roleId&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;role_name&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;roleName&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;role_desc&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;roleDesc&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">collection</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;users&quot;</span> <span class="hljs-attr">ofType</span>=<span class="hljs-string">&quot;cn.pine.domain.User&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">id</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;id&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;username&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;username&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;address&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;address&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;sex&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;sex&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">result</span> <span class="hljs-attr">column</span>=<span class="hljs-string">&quot;birthday&quot;</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;birthday&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">collection</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">resultMap</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;findAll&quot;</span> <span class="hljs-attr">resultMap</span>=<span class="hljs-string">&quot;roleMap&quot;</span>&gt;</span>
+    SELECT u.*, r.id as rid, r.role_name, r.role_desc from role r LEFT outer JOIN user_role ur on r.id = ur.rid left outer join user u on u.id=ur.uid
+<span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></code></pre></div>
+
+<h3 id="4-1-5-测试"><a href="#4-1-5-测试" class="headerlink" title="4.1.5 测试"></a>4.1.5 测试</h3><div class="hljs"><pre><code class="hljs java"><span class="hljs-comment">//获得的动态代理对象应为session.getMapper(IRoleDao.class)</span>
+<span class="hljs-meta">@Test</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testFindAll</span><span class="hljs-params">()</span> </span>&#123;
+    List&lt;Role&gt; roles = roleDao.findAll();
+    <span class="hljs-keyword">for</span> (Role role : roles) &#123;
+        System.out.println(<span class="hljs-string">&quot;======每个角色的信息========&quot;</span>);
+        System.out.println(role);
+        System.out.println(role.getUsers());
+    &#125;
+&#125;</code></pre></div>
+
+<p>返回结果</p>
+<div class="hljs"><pre><code class="hljs routeros">======每个角色的信息========
+Role&#123;<span class="hljs-attribute">roleId</span>=1, <span class="hljs-attribute">roleName</span>=<span class="hljs-string">&#x27;院长&#x27;</span>, <span class="hljs-attribute">roleDesc</span>=<span class="hljs-string">&#x27;管理整个学院&#x27;</span>, users=[User&#123;<span class="hljs-attribute">id</span>=41, <span class="hljs-attribute">username</span>=<span class="hljs-string">&#x27;王一&#x27;</span>, <span class="hljs-attribute">birthday</span>=Tue Feb 27 17:47:08 CST 2018, <span class="hljs-attribute">sex</span>=<span class="hljs-string">&#x27;男&#x27;</span>, <span class="hljs-attribute">address</span>=<span class="hljs-string">&#x27;北京&#x27;</span>&#125;, User&#123;<span class="hljs-attribute">id</span>=45, <span class="hljs-attribute">username</span>=<span class="hljs-string">&#x27;李四&#x27;</span>, <span class="hljs-attribute">birthday</span>=Sun Mar 04 12:04:06 CST 2018, <span class="hljs-attribute">sex</span>=<span class="hljs-string">&#x27;男&#x27;</span>, <span class="hljs-attribute">address</span>=<span class="hljs-string">&#x27;深圳&#x27;</span>&#125;]&#125;
+[User&#123;<span class="hljs-attribute">id</span>=41, <span class="hljs-attribute">username</span>=<span class="hljs-string">&#x27;王一&#x27;</span>, <span class="hljs-attribute">birthday</span>=Tue Feb 27 17:47:08 CST 2018, <span class="hljs-attribute">sex</span>=<span class="hljs-string">&#x27;男&#x27;</span>, <span class="hljs-attribute">address</span>=<span class="hljs-string">&#x27;北京&#x27;</span>&#125;, User&#123;<span class="hljs-attribute">id</span>=45, <span class="hljs-attribute">username</span>=<span class="hljs-string">&#x27;李四&#x27;</span>, <span class="hljs-attribute">birthday</span>=Sun Mar 04 12:04:06 CST 2018, <span class="hljs-attribute">sex</span>=<span class="hljs-string">&#x27;男&#x27;</span>, <span class="hljs-attribute">address</span>=<span class="hljs-string">&#x27;深圳&#x27;</span>&#125;]
+======每个角色的信息========
+Role&#123;<span class="hljs-attribute">roleId</span>=2, <span class="hljs-attribute">roleName</span>=<span class="hljs-string">&#x27;总裁&#x27;</span>, <span class="hljs-attribute">roleDesc</span>=<span class="hljs-string">&#x27;管理整个公司&#x27;</span>, users=[User&#123;<span class="hljs-attribute">id</span>=41, <span class="hljs-attribute">username</span>=<span class="hljs-string">&#x27;王一&#x27;</span>, <span class="hljs-attribute">birthday</span>=Tue Feb 27 17:47:08 CST 2018, <span class="hljs-attribute">sex</span>=<span class="hljs-string">&#x27;男&#x27;</span>, <span class="hljs-attribute">address</span>=<span class="hljs-string">&#x27;北京&#x27;</span>&#125;]&#125;
+[User&#123;<span class="hljs-attribute">id</span>=41, <span class="hljs-attribute">username</span>=<span class="hljs-string">&#x27;王一&#x27;</span>, <span class="hljs-attribute">birthday</span>=Tue Feb 27 17:47:08 CST 2018, <span class="hljs-attribute">sex</span>=<span class="hljs-string">&#x27;男&#x27;</span>, <span class="hljs-attribute">address</span>=<span class="hljs-string">&#x27;北京&#x27;</span>&#125;]
+======每个角色的信息========
+Role&#123;<span class="hljs-attribute">roleId</span>=3, <span class="hljs-attribute">roleName</span>=<span class="hljs-string">&#x27;校长&#x27;</span>, <span class="hljs-attribute">roleDesc</span>=<span class="hljs-string">&#x27;管理整个学校&#x27;</span>, users=[]&#125;
+[]</code></pre></div>
+
+
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6/">框架</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
+                    
+                      <a class="hover-with-bg" href="/tags/MyBatis/">MyBatis</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/08/27/mybatis%E5%85%A5%E9%97%A8%E4%BA%8C/">
+                        <span class="hidden-mobile">MaBatis入门二</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "MyBatis入门三&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+  
+  
+    <script>
+      !function (e, t, a) {
+        function r() {
+          for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
+          requestAnimationFrame(r)
+        }
+
+        function n() {
+          var t = "function" == typeof e.onclick && e.onclick;
+          e.onclick = function (e) {
+            t && t(), o(e)
+          }
+        }
+
+        function o(e) {
+          var a = t.createElement("div");
+          a.className = "heart", s.push({
+            el: a,
+            x: e.clientX - 5,
+            y: e.clientY - 5,
+            scale: 1,
+            alpha: 1,
+            color: c()
+          }), t.body.appendChild(a)
+        }
+
+        function i(e) {
+          var a = t.createElement("style");
+          a.type = "text/css";
+          try {
+            a.appendChild(t.createTextNode(e))
+          } catch (t) {
+            a.styleSheet.cssText = e
+          }
+          t.getElementsByTagName("head")[0].appendChild(a)
+        }
+
+        function c() {
+          return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+        }
+
+        var s = [];
+        e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
+          setTimeout(e, 1e3 / 60)
+        }, i(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"), n(), r()
+      }(window, document);
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
