@@ -1,860 +1,509 @@
+
+
 <!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next gemini use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content>
+  <meta name="author" content="beforefive">
+  <meta name="keywords" content>
+  <title>mysql命令 - beforefive&#39;s blog</title>
+
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
 
 
+  <link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css">
+  <link rel="stylesheet" href="/lib/hint/hint.min.css">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-
-<link rel="stylesheet" href="/css/main.css?v=7.2.0">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '7.2.0',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
+  
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css">
+  
 
   
 
 
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<!-- 自定义样式保持在最底部 -->
 
 
-  <meta name="description" content="这次记录理解学习mysql命令">
-<meta name="keywords" content="命令">
-<meta property="og:type" content="article">
-<meta property="og:title" content="mysql命令">
-<meta property="og:url" content="https://beforefive.github.io/2019/07/13/mysql/index.html">
-<meta property="og:site_name" content="beforefive&#39;s blog">
-<meta property="og:description" content="这次记录理解学习mysql命令">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-08-25T16:13:03.286Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mysql命令">
-<meta name="twitter:description" content="这次记录理解学习mysql命令">
-
-
-
-
-
-  
-  
-  <link rel="canonical" href="https://beforefive.github.io/2019/07/13/mysql/">
-
-
-
-<script id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title>mysql命令 | beforefive's blog</title>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .motion-element,
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-
-  .use-motion .logo,
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+  <script src="/js/utils.js"></script>
+  <script src="/js/color-schema.js"></script>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
-  
-  
-    
-  
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
 
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">beforefive's blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-    
-    
-  </div>
-
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
     </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
   </div>
-</div>
-
-
-
-<nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
-
-    
-    
-      
-    
-
-    
-      
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
-      
-    
-
-    
-      
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">4</span></a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-
-    
-    
-      
-    
-
-    
-      
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">3</span></a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-
-    
-    
-      
-    
-
-    
-      
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">3</span></a>
-
-  </li>
-
-      
-      
-    </ul>
-  
-
-  
-
-  
 </nav>
 
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2019-07-12 16:53" pubdate>
+      2019年7月12日 下午
+    </time>
+  </div>
 
 
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      691 字
+    </span>
   
 
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      9
+       分钟
+    </span>
+  
 
-
+  
+  
 </div>
-    </header>
-
-    
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-            
-
-          
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://beforefive.github.io/2019/07/13/mysql/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="beforefive">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="beforefive's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">mysql命令
-
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-12 16:53:23" itemprop="dateCreated datePublished" datetime="2019-07-12T16:53:23Z">2019-07-12</time>
-            </span>
-          
-
-          
-            
 
             
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-08-25 16:13:03" itemprop="dateModified" datetime="2020-08-25T16:13:03Z">2020-08-25</time>
-              </span>
-            
-          
+          </div>
 
           
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      </div>
+    </div>
+  </header>
 
+  <main>
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
-      
-        <p>这次记录理解学习mysql命令</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">mysql命令</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <p>这次记录理解学习mysql命令</p>
 <a id="more"></a>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">create database xx;//创建数据库xx</span><br><span class="line">show databases;查看数据库</span><br><span class="line">drop database xx;删除数据库</span><br><span class="line"></span><br><span class="line">use xx;//进入xx数据库</span><br><span class="line">create table xxx (id int (32),username varchar(40),password varchar(32));创建表格式</span><br><span class="line">show create tables;查看表</span><br><span class="line">desc xxx;// 查看表结构</span><br><span class="line">select database();//查看当前表在哪个库下 </span><br><span class="line">drop xxx;//删除xxx表</span><br><span class="line">alter table 原表命 rename 新表明</span><br><span class="line">alter table xx change 字段名 字段名1 varchar(66);//修改字段</span><br><span class="line">alter table xx modify 字段名 修改值;//修改字段值</span><br><span class="line">alter table xx drop 字段名;//删除字段</span><br><span class="line">alter table xx add 字段名 varchar(55) first;//插入字段到首行</span><br><span class="line">alter table xx add 字段名 varchar(55) after 字段名1;//插入到字段名1后一行</span><br><span class="line">show index from xx;//查看索引情况</span><br><span class="line">alter table xx add index(字段);//给字段加入普通索引 </span><br><span class="line">alter table xx add unique(字段);//给字段加入唯一索引 </span><br><span class="line">alter table xx add fulltext(字段);//给字段加入全文索引 </span><br><span class="line">alter table xx add primary key(字段);//给字段加入主键索引 </span><br><span class="line"></span><br><span class="line">insert into bbs_user values(1,&apos;成龙&apos;,123123,64,223,333324);//给bbs_user表下插入数据</span><br><span class="line">insert into bbs_user(id , username , password , age , email , address ) values(2,&apos;萨拉赫&apos;,123445,12,1231,123123),(&apos;库蒂尼奥&apos; ，1231，13，1312，132123);//与上一条命令不同在于自动递增的id字段不用输入直接从username开始就行，也可插入多条数据，更灵活</span><br><span class="line"></span><br><span class="line">select * from bbs_user;//查看bbs_user表下的数据</span><br><span class="line">select count (*) from bbs_user;//查看bbs_user表下的数据个数</span><br><span class="line">select * from bbs_user where id=2;//查看bbs_user表下id=2的数据</span><br><span class="line">select * from bbs_user where id&gt;2;//查看bbs_user表下id&gt;2的数据</span><br><span class="line">select username, address from bbs_user;//查看bbs_user表下username, address的数据</span><br><span class="line">select * from bbs_user where id in&lt;1,3,&gt;;//查看bbs_user表下id为1，3，4，的数据</span><br><span class="line">select * from bbs_user where username like &apos;四%&apos;;//模糊查询，查bbs_user表username开头为四的数据</span><br><span class="line">select * from bbs_user where username like &apos;%四&apos;%;//模糊查询，查bbs_user表username有四的数据</span><br><span class="line">select * from bbs_user order by address;//使bbs_user表根据address字段升排序 </span><br><span class="line">select * from bbs_user order by address desc;//使bbs_user表根据address字段降排序 </span><br><span class="line">select * from bbs_user group by password;//将表按照password字段分组，（字段相同不显示）</span><br><span class="line">select * from bbs_user limit 5,15;//检索记录行6到行15</span><br><span class="line">select username , gname from shop_user inner join shop_goods on shop_user.gid = shop_goods.gid;//内联查询 ，查询两个表对应的数据（一二，二三，看一三）</span><br><span class="line">select shop_user.username  from shop_user left join shop_goods on shop_user.gid = shop_goods.gid;//左联查询，以左表为基准</span><br><span class="line">select shop_user.username from shop_user right join shop_goods on shop_user.gid = shop_goods.gid;//右联查询，以右表为基准</span><br><span class="line">select *from shop_user where gid in(select gid from shop_goods);//查shop_user下有带shop_goods中gid中的值的所有数据</span><br><span class="line">delete from bbs_user where username=&apos;李敖&apos;;//删除表中数据</span><br><span class="line">update bbs_user set username=&apos;安安&apos;,address=&apos;88888&apos; where id=1;//把id为1的数据的username字段改为安安，address字段改为88888</span><br></pre></td></tr></table></figure>
-      
-    </div>
+<pre><code class="hljs undefined">create database xx;<span class="hljs-comment">//创建数据库xx</span>
+show databases;查看数据库
+drop database xx;删除数据库
 
-    
+use xx;<span class="hljs-comment">//进入xx数据库</span>
+<span class="hljs-function">create table <span class="hljs-title">xxx</span> (<span class="hljs-params">id <span class="hljs-keyword">int</span> (<span class="hljs-number">32</span></span>),username <span class="hljs-title">varchar</span>(<span class="hljs-params"><span class="hljs-number">40</span></span>),password <span class="hljs-title">varchar</span>(<span class="hljs-params"><span class="hljs-number">32</span></span>))</span>;创建表格式
+show create tables;查看表
+desc xxx;<span class="hljs-comment">// 查看表结构</span>
+<span class="hljs-function"><span class="hljs-keyword">select</span> <span class="hljs-title">database</span>(<span class="hljs-params"></span>)</span>;<span class="hljs-comment">//查看当前表在哪个库下 </span>
+drop xxx;<span class="hljs-comment">//删除xxx表</span>
+alter table 原表命 rename 新表明
+alter table xx change 字段名 字段名<span class="hljs-number">1</span> varchar(<span class="hljs-number">66</span>);<span class="hljs-comment">//修改字段</span>
+alter table xx modify 字段名 修改值;<span class="hljs-comment">//修改字段值</span>
+alter table xx drop 字段名;<span class="hljs-comment">//删除字段</span>
+alter table xx <span class="hljs-keyword">add</span> 字段名 varchar(<span class="hljs-number">55</span>) first;<span class="hljs-comment">//插入字段到首行</span>
+alter table xx <span class="hljs-keyword">add</span> 字段名 varchar(<span class="hljs-number">55</span>) after 字段名<span class="hljs-number">1</span>;<span class="hljs-comment">//插入到字段名1后一行</span>
+show index <span class="hljs-keyword">from</span> xx;<span class="hljs-comment">//查看索引情况</span>
+<span class="hljs-function">alter table xx <span class="hljs-keyword">add</span> <span class="hljs-title">index</span>(<span class="hljs-params">字段</span>)</span>;<span class="hljs-comment">//给字段加入普通索引 </span>
+<span class="hljs-function">alter table xx <span class="hljs-keyword">add</span> <span class="hljs-title">unique</span>(<span class="hljs-params">字段</span>)</span>;<span class="hljs-comment">//给字段加入唯一索引 </span>
+<span class="hljs-function">alter table xx <span class="hljs-keyword">add</span> <span class="hljs-title">fulltext</span>(<span class="hljs-params">字段</span>)</span>;<span class="hljs-comment">//给字段加入全文索引 </span>
+<span class="hljs-function">alter table xx <span class="hljs-keyword">add</span> primary <span class="hljs-title">key</span>(<span class="hljs-params">字段</span>)</span>;<span class="hljs-comment">//给字段加入主键索引 </span>
 
-    
-    
-    
+<span class="hljs-function">insert <span class="hljs-keyword">into</span> bbs_user <span class="hljs-title">values</span>(<span class="hljs-params"><span class="hljs-number">1</span>,<span class="hljs-string">'成龙'</span>,<span class="hljs-number">123123</span>,<span class="hljs-number">64</span>,<span class="hljs-number">223</span>,<span class="hljs-number">333324</span></span>)</span>;<span class="hljs-comment">//给bbs_user表下插入数据</span>
+<span class="hljs-function">insert <span class="hljs-keyword">into</span> <span class="hljs-title">bbs_user</span>(<span class="hljs-params">id , username , password , age , email , address </span>) <span class="hljs-title">values</span>(<span class="hljs-params"><span class="hljs-number">2</span>,<span class="hljs-string">'萨拉赫'</span>,<span class="hljs-number">123445</span>,<span class="hljs-number">12</span>,<span class="hljs-number">1231</span>,<span class="hljs-number">123123</span></span>),(<span class="hljs-params"><span class="hljs-string">'库蒂尼奥'</span> ，<span class="hljs-number">1231</span>，<span class="hljs-number">13</span>，<span class="hljs-number">1312</span>，<span class="hljs-number">132123</span></span>)</span>;<span class="hljs-comment">//与上一条命令不同在于自动递增的id字段不用输入直接从username开始就行，也可插入多条数据，更灵活</span>
 
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-        
-          
-        
-        <div class="post-tags">
-          
-            <a href="/tags/命令/" rel="tag"># 命令</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/24/pyhthonExample16-20/" rel="prev" title="Python-day16-20">
-                Python-day16-20 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-  </div>
-
-
-          </div>
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">beforefive</p>
-              <div class="site-description motion-element" itemprop="description"></div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user;<span class="hljs-comment">//查看bbs_user表下的数据</span>
+<span class="hljs-function"><span class="hljs-keyword">select</span> <span class="hljs-title">count</span> (<span class="hljs-params">*</span>) <span class="hljs-keyword">from</span> bbs_user</span>;<span class="hljs-comment">//查看bbs_user表下的数据个数</span>
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">where</span> id=<span class="hljs-number">2</span>;<span class="hljs-comment">//查看bbs_user表下id=2的数据</span>
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">where</span> id&gt;<span class="hljs-number">2</span>;<span class="hljs-comment">//查看bbs_user表下id&gt;2的数据</span>
+<span class="hljs-keyword">select</span> username, address <span class="hljs-keyword">from</span> bbs_user;<span class="hljs-comment">//查看bbs_user表下username, address的数据</span>
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">where</span> id <span class="hljs-keyword">in</span>&lt;<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,&gt;;<span class="hljs-comment">//查看bbs_user表下id为1，3，4，的数据</span>
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">where</span> username like <span class="hljs-string">'四%'</span>;<span class="hljs-comment">//模糊查询，查bbs_user表username开头为四的数据</span>
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">where</span> username like <span class="hljs-string">'%四'</span>%;<span class="hljs-comment">//模糊查询，查bbs_user表username有四的数据</span>
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user order <span class="hljs-keyword">by</span> address;<span class="hljs-comment">//使bbs_user表根据address字段升排序 </span>
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user order <span class="hljs-keyword">by</span> address desc;<span class="hljs-comment">//使bbs_user表根据address字段降排序 </span>
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> password;<span class="hljs-comment">//将表按照password字段分组，（字段相同不显示）</span>
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user limit <span class="hljs-number">5</span>,<span class="hljs-number">15</span>;<span class="hljs-comment">//检索记录行6到行15</span>
+<span class="hljs-keyword">select</span> username , gname <span class="hljs-keyword">from</span> shop_user inner <span class="hljs-keyword">join</span> shop_goods <span class="hljs-keyword">on</span> shop_user.gid = shop_goods.gid;<span class="hljs-comment">//内联查询 ，查询两个表对应的数据（一二，二三，看一三）</span>
+<span class="hljs-keyword">select</span> shop_user.username  <span class="hljs-keyword">from</span> shop_user left <span class="hljs-keyword">join</span> shop_goods <span class="hljs-keyword">on</span> shop_user.gid = shop_goods.gid;<span class="hljs-comment">//左联查询，以左表为基准</span>
+<span class="hljs-keyword">select</span> shop_user.username <span class="hljs-keyword">from</span> shop_user right <span class="hljs-keyword">join</span> shop_goods <span class="hljs-keyword">on</span> shop_user.gid = shop_goods.gid;<span class="hljs-comment">//右联查询，以右表为基准</span>
+<span class="hljs-keyword">select</span> *<span class="hljs-function"><span class="hljs-keyword">from</span> shop_user <span class="hljs-keyword">where</span> gid <span class="hljs-title">in</span>(<span class="hljs-params"><span class="hljs-keyword">select</span> gid <span class="hljs-keyword">from</span> shop_goods</span>)</span>;<span class="hljs-comment">//查shop_user下有带shop_goods中gid中的值的所有数据</span>
+delete <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">where</span> username=<span class="hljs-string">'李敖'</span>;<span class="hljs-comment">//删除表中数据</span>
+update bbs_user <span class="hljs-keyword">set</span> username=<span class="hljs-string">'安安'</span>,address=<span class="hljs-string">'88888'</span> <span class="hljs-keyword">where</span> id=<span class="hljs-number">1</span>;<span class="hljs-comment">//把id为1的数据的username字段改为安安，address字段改为88888</span></code></pre>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/mysql/">mysql</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/命令/">命令</a>
+                    
+                  </div>
+                
+              </div>
               
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">3</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/08/26/pyhthonExample16-20/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Python-day16-20</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
                 </div>
               
+            </div>
 
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">3</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                      <a href="/tags/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">4</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-
-          
-
-          
-          
-
-          
             
-          
-          
-
+          </article>
         </div>
       </div>
-
-      
-
-      
-
     </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">beforefive</span>
-
-  
-
-  
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
 </div>
 
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
       </div>
     
+  </div>
+</div>
 
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
     
 
     
 
     
   </div>
+</footer>
 
-  
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
 
-<script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- Plugins -->
 
 
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/utils.js?v=7.2.0"></script>
-
-  <script src="/js/motion.js?v=7.2.0"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/affix.js?v=7.2.0"></script>
-
-  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
-
-
-
-
-  
-  <script src="/js/scrollspy.js?v=7.2.0"></script>
-<script src="/js/post-details.js?v=7.2.0"></script>
-
-
-
-  
-
-
-  <script src="/js/next-boot.js?v=7.2.0"></script>
-
-
-  
-
-  
-
-  
-
-  
-
-
-  
-
-
+    <script  src="/js/lazyload.js" ></script>
   
 
 
 
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
 
 
-  
 
-  
 
-  
 
-  
 
-  
 
-  
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
 
-  
-
-  
-
-  
-<script>
-  $('.highlight').not('.gist .highlight').each(function(i, e) {
-    var $wrap = $('<div>').addClass('highlight-wrap');
-    $(e).after($wrap);
-    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
-      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
-        return $(e).text();
-      }).toArray().join('\n');
-      var ta = document.createElement('textarea');
-      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
-      ta.style.top = yPosition + 'px'; // Prevent page scroll
-      ta.style.position = 'absolute';
-      ta.style.opacity = '0';
-      ta.readOnly = true;
-      ta.value = code;
-      document.body.appendChild(ta);
-      const selection = document.getSelection();
-      const selected = selection.rangeCount > 0 ? selection.getRangeAt(0) : false;
-      ta.select();
-      ta.setSelectionRange(0, code.length);
-      ta.readOnly = false;
-      var result = document.execCommand('copy');
-      
-        if (result) $(this).text('复制成功');
-        else $(this).text('复制失败');
-      
-      ta.blur(); // For iOS
-      $(this).blur();
-      if (selected) {
-        selection.removeAllRanges();
-        selection.addRange(selected);
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
       }
-    })).on('mouseleave', function(e) {
-      var $b = $(this).find('.copy-btn');
-      setTimeout(function() {
-        $b.text('复制');
-      }, 300);
-    }).append(e);
-  })
-</script>
+    });
+  </script>
 
 
-  
 
-  
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "mysql命令&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
