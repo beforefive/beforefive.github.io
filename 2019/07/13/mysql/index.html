@@ -5,46 +5,51 @@
 
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content>
+  <meta name="description" content="">
   <meta name="author" content="beforefive">
-  <meta name="keywords" content>
+  <meta name="keywords" content="">
   <title>mysql命令 - beforefive&#39;s blog</title>
 
-  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
 
-  <link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css">
-  <link rel="stylesheet" href="/lib/hint/hint.min.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
     
-    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css">
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
   
 
   
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
+
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+
+
 
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
 
-<link rel="stylesheet" href="/css/main.css">
+
+<link  rel="stylesheet" href="/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
 
-  <script src="/js/utils.js"></script>
-  <script src="/js/color-schema.js"></script>
-</head>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
 
 
 <body>
@@ -166,7 +171,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      691 字
+      707 字
     </span>
   
 
@@ -176,7 +181,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      10
        分钟
     </span>
   
@@ -212,49 +217,49 @@
               <p>这次记录理解学习mysql命令</p>
 <a id="more"></a>
 
-<pre><code class="hljs undefined">create database xx;<span class="hljs-comment">//创建数据库xx</span>
-show databases;查看数据库
-drop database xx;删除数据库
+<pre><code class="hljs pgsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">database</span> xx;//创建数据库xx
+<span class="hljs-keyword">show</span> databases;查看数据库
+<span class="hljs-keyword">drop</span> <span class="hljs-keyword">database</span> xx;删除数据库
 
-use xx;<span class="hljs-comment">//进入xx数据库</span>
-<span class="hljs-function">create table <span class="hljs-title">xxx</span> (<span class="hljs-params">id <span class="hljs-keyword">int</span> (<span class="hljs-number">32</span></span>),username <span class="hljs-title">varchar</span>(<span class="hljs-params"><span class="hljs-number">40</span></span>),password <span class="hljs-title">varchar</span>(<span class="hljs-params"><span class="hljs-number">32</span></span>))</span>;创建表格式
-show create tables;查看表
-desc xxx;<span class="hljs-comment">// 查看表结构</span>
-<span class="hljs-function"><span class="hljs-keyword">select</span> <span class="hljs-title">database</span>(<span class="hljs-params"></span>)</span>;<span class="hljs-comment">//查看当前表在哪个库下 </span>
-drop xxx;<span class="hljs-comment">//删除xxx表</span>
-alter table 原表命 rename 新表明
-alter table xx change 字段名 字段名<span class="hljs-number">1</span> varchar(<span class="hljs-number">66</span>);<span class="hljs-comment">//修改字段</span>
-alter table xx modify 字段名 修改值;<span class="hljs-comment">//修改字段值</span>
-alter table xx drop 字段名;<span class="hljs-comment">//删除字段</span>
-alter table xx <span class="hljs-keyword">add</span> 字段名 varchar(<span class="hljs-number">55</span>) first;<span class="hljs-comment">//插入字段到首行</span>
-alter table xx <span class="hljs-keyword">add</span> 字段名 varchar(<span class="hljs-number">55</span>) after 字段名<span class="hljs-number">1</span>;<span class="hljs-comment">//插入到字段名1后一行</span>
-show index <span class="hljs-keyword">from</span> xx;<span class="hljs-comment">//查看索引情况</span>
-<span class="hljs-function">alter table xx <span class="hljs-keyword">add</span> <span class="hljs-title">index</span>(<span class="hljs-params">字段</span>)</span>;<span class="hljs-comment">//给字段加入普通索引 </span>
-<span class="hljs-function">alter table xx <span class="hljs-keyword">add</span> <span class="hljs-title">unique</span>(<span class="hljs-params">字段</span>)</span>;<span class="hljs-comment">//给字段加入唯一索引 </span>
-<span class="hljs-function">alter table xx <span class="hljs-keyword">add</span> <span class="hljs-title">fulltext</span>(<span class="hljs-params">字段</span>)</span>;<span class="hljs-comment">//给字段加入全文索引 </span>
-<span class="hljs-function">alter table xx <span class="hljs-keyword">add</span> primary <span class="hljs-title">key</span>(<span class="hljs-params">字段</span>)</span>;<span class="hljs-comment">//给字段加入主键索引 </span>
+use xx;//进入xx数据库
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> xxx (id <span class="hljs-type">int</span> (<span class="hljs-number">32</span>),username <span class="hljs-type">varchar</span>(<span class="hljs-number">40</span>),<span class="hljs-keyword">password</span> <span class="hljs-type">varchar</span>(<span class="hljs-number">32</span>));创建表格式
+<span class="hljs-keyword">show</span> <span class="hljs-keyword">create</span> <span class="hljs-keyword">tables</span>;查看表
+<span class="hljs-keyword">desc</span> xxx;// 查看表结构
+<span class="hljs-keyword">select</span> <span class="hljs-keyword">database</span>();//查看当前表在哪个库下 
+<span class="hljs-keyword">drop</span> xxx;//删除xxx表
+<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> 原表命 <span class="hljs-keyword">rename</span> 新表明
+<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> xx change 字段名 字段名<span class="hljs-number">1</span> <span class="hljs-type">varchar</span>(<span class="hljs-number">66</span>);//修改字段
+<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> xx modify 字段名 修改值;//修改字段值
+<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> xx <span class="hljs-keyword">drop</span> 字段名;//删除字段
+<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> xx <span class="hljs-keyword">add</span> 字段名 <span class="hljs-type">varchar</span>(<span class="hljs-number">55</span>) first;//插入字段到首行
+<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> xx <span class="hljs-keyword">add</span> 字段名 <span class="hljs-type">varchar</span>(<span class="hljs-number">55</span>) <span class="hljs-keyword">after</span> 字段名<span class="hljs-number">1</span>;//插入到字段名<span class="hljs-number">1</span>后一行
+<span class="hljs-keyword">show</span> <span class="hljs-keyword">index</span> <span class="hljs-keyword">from</span> xx;//查看索引情况
+<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> xx <span class="hljs-keyword">add</span> <span class="hljs-keyword">index</span>(字段);//给字段加入普通索引 
+<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> xx <span class="hljs-keyword">add</span> <span class="hljs-keyword">unique</span>(字段);//给字段加入唯一索引 
+<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> xx <span class="hljs-keyword">add</span> fulltext(字段);//给字段加入全文索引 
+<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> xx <span class="hljs-keyword">add</span> <span class="hljs-keyword">primary key</span>(字段);//给字段加入主键索引 
 
-<span class="hljs-function">insert <span class="hljs-keyword">into</span> bbs_user <span class="hljs-title">values</span>(<span class="hljs-params"><span class="hljs-number">1</span>,<span class="hljs-string">'成龙'</span>,<span class="hljs-number">123123</span>,<span class="hljs-number">64</span>,<span class="hljs-number">223</span>,<span class="hljs-number">333324</span></span>)</span>;<span class="hljs-comment">//给bbs_user表下插入数据</span>
-<span class="hljs-function">insert <span class="hljs-keyword">into</span> <span class="hljs-title">bbs_user</span>(<span class="hljs-params">id , username , password , age , email , address </span>) <span class="hljs-title">values</span>(<span class="hljs-params"><span class="hljs-number">2</span>,<span class="hljs-string">'萨拉赫'</span>,<span class="hljs-number">123445</span>,<span class="hljs-number">12</span>,<span class="hljs-number">1231</span>,<span class="hljs-number">123123</span></span>),(<span class="hljs-params"><span class="hljs-string">'库蒂尼奥'</span> ，<span class="hljs-number">1231</span>，<span class="hljs-number">13</span>，<span class="hljs-number">1312</span>，<span class="hljs-number">132123</span></span>)</span>;<span class="hljs-comment">//与上一条命令不同在于自动递增的id字段不用输入直接从username开始就行，也可插入多条数据，更灵活</span>
+<span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> bbs_user <span class="hljs-keyword">values</span>(<span class="hljs-number">1</span>,<span class="hljs-string">&#x27;成龙&#x27;</span>,<span class="hljs-number">123123</span>,<span class="hljs-number">64</span>,<span class="hljs-number">223</span>,<span class="hljs-number">333324</span>);//给bbs_user表下插入数据
+<span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> bbs_user(id , username , <span class="hljs-keyword">password</span> , age , email , address ) <span class="hljs-keyword">values</span>(<span class="hljs-number">2</span>,<span class="hljs-string">&#x27;萨拉赫&#x27;</span>,<span class="hljs-number">123445</span>,<span class="hljs-number">12</span>,<span class="hljs-number">1231</span>,<span class="hljs-number">123123</span>),(<span class="hljs-string">&#x27;库蒂尼奥&#x27;</span> ，<span class="hljs-number">1231</span>，<span class="hljs-number">13</span>，<span class="hljs-number">1312</span>，<span class="hljs-number">132123</span>);//与上一条命令不同在于自动递增的id字段不用输入直接从username开始就行，也可插入多条数据，更灵活
 
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user;<span class="hljs-comment">//查看bbs_user表下的数据</span>
-<span class="hljs-function"><span class="hljs-keyword">select</span> <span class="hljs-title">count</span> (<span class="hljs-params">*</span>) <span class="hljs-keyword">from</span> bbs_user</span>;<span class="hljs-comment">//查看bbs_user表下的数据个数</span>
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">where</span> id=<span class="hljs-number">2</span>;<span class="hljs-comment">//查看bbs_user表下id=2的数据</span>
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">where</span> id&gt;<span class="hljs-number">2</span>;<span class="hljs-comment">//查看bbs_user表下id&gt;2的数据</span>
-<span class="hljs-keyword">select</span> username, address <span class="hljs-keyword">from</span> bbs_user;<span class="hljs-comment">//查看bbs_user表下username, address的数据</span>
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">where</span> id <span class="hljs-keyword">in</span>&lt;<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,&gt;;<span class="hljs-comment">//查看bbs_user表下id为1，3，4，的数据</span>
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">where</span> username like <span class="hljs-string">'四%'</span>;<span class="hljs-comment">//模糊查询，查bbs_user表username开头为四的数据</span>
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">where</span> username like <span class="hljs-string">'%四'</span>%;<span class="hljs-comment">//模糊查询，查bbs_user表username有四的数据</span>
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user order <span class="hljs-keyword">by</span> address;<span class="hljs-comment">//使bbs_user表根据address字段升排序 </span>
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user order <span class="hljs-keyword">by</span> address desc;<span class="hljs-comment">//使bbs_user表根据address字段降排序 </span>
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> password;<span class="hljs-comment">//将表按照password字段分组，（字段相同不显示）</span>
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user limit <span class="hljs-number">5</span>,<span class="hljs-number">15</span>;<span class="hljs-comment">//检索记录行6到行15</span>
-<span class="hljs-keyword">select</span> username , gname <span class="hljs-keyword">from</span> shop_user inner <span class="hljs-keyword">join</span> shop_goods <span class="hljs-keyword">on</span> shop_user.gid = shop_goods.gid;<span class="hljs-comment">//内联查询 ，查询两个表对应的数据（一二，二三，看一三）</span>
-<span class="hljs-keyword">select</span> shop_user.username  <span class="hljs-keyword">from</span> shop_user left <span class="hljs-keyword">join</span> shop_goods <span class="hljs-keyword">on</span> shop_user.gid = shop_goods.gid;<span class="hljs-comment">//左联查询，以左表为基准</span>
-<span class="hljs-keyword">select</span> shop_user.username <span class="hljs-keyword">from</span> shop_user right <span class="hljs-keyword">join</span> shop_goods <span class="hljs-keyword">on</span> shop_user.gid = shop_goods.gid;<span class="hljs-comment">//右联查询，以右表为基准</span>
-<span class="hljs-keyword">select</span> *<span class="hljs-function"><span class="hljs-keyword">from</span> shop_user <span class="hljs-keyword">where</span> gid <span class="hljs-title">in</span>(<span class="hljs-params"><span class="hljs-keyword">select</span> gid <span class="hljs-keyword">from</span> shop_goods</span>)</span>;<span class="hljs-comment">//查shop_user下有带shop_goods中gid中的值的所有数据</span>
-delete <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">where</span> username=<span class="hljs-string">'李敖'</span>;<span class="hljs-comment">//删除表中数据</span>
-update bbs_user <span class="hljs-keyword">set</span> username=<span class="hljs-string">'安安'</span>,address=<span class="hljs-string">'88888'</span> <span class="hljs-keyword">where</span> id=<span class="hljs-number">1</span>;<span class="hljs-comment">//把id为1的数据的username字段改为安安，address字段改为88888</span></code></pre>
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user;//查看bbs_user表下的数据
+<span class="hljs-keyword">select</span> count (*) <span class="hljs-keyword">from</span> bbs_user;//查看bbs_user表下的数据个数
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">where</span> id=<span class="hljs-number">2</span>;//查看bbs_user表下id=<span class="hljs-number">2</span>的数据
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">where</span> id&gt;<span class="hljs-number">2</span>;//查看bbs_user表下id&gt;<span class="hljs-number">2</span>的数据
+<span class="hljs-keyword">select</span> username, address <span class="hljs-keyword">from</span> bbs_user;//查看bbs_user表下username, address的数据
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">where</span> id <span class="hljs-keyword">in</span>&lt;<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,&gt;;//查看bbs_user表下id为<span class="hljs-number">1</span>，<span class="hljs-number">3</span>，<span class="hljs-number">4</span>，的数据
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">where</span> username <span class="hljs-keyword">like</span> <span class="hljs-string">&#x27;四%&#x27;</span>;//模糊查询，查bbs_user表username开头为四的数据
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">where</span> username <span class="hljs-keyword">like</span> <span class="hljs-string">&#x27;%四&#x27;</span>%;//模糊查询，查bbs_user表username有四的数据
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> address;//使bbs_user表根据address字段升排序 
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> address <span class="hljs-keyword">desc</span>;//使bbs_user表根据address字段降排序 
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-keyword">password</span>;//将表按照<span class="hljs-keyword">password</span>字段分组，（字段相同不显示）
+<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">limit</span> <span class="hljs-number">5</span>,<span class="hljs-number">15</span>;//检索记录行<span class="hljs-number">6</span>到行<span class="hljs-number">15</span>
+<span class="hljs-keyword">select</span> username , gname <span class="hljs-keyword">from</span> shop_user <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> shop_goods <span class="hljs-keyword">on</span> shop_user.gid = shop_goods.gid;//内联查询 ，查询两个表对应的数据（一二，二三，看一三）
+<span class="hljs-keyword">select</span> shop_user.username  <span class="hljs-keyword">from</span> shop_user <span class="hljs-keyword">left join</span> shop_goods <span class="hljs-keyword">on</span> shop_user.gid = shop_goods.gid;//左联查询，以左表为基准
+<span class="hljs-keyword">select</span> shop_user.username <span class="hljs-keyword">from</span> shop_user <span class="hljs-keyword">right join</span> shop_goods <span class="hljs-keyword">on</span> shop_user.gid = shop_goods.gid;//右联查询，以右表为基准
+<span class="hljs-keyword">select</span> *<span class="hljs-keyword">from</span> shop_user <span class="hljs-keyword">where</span> gid <span class="hljs-keyword">in</span>(<span class="hljs-keyword">select</span> gid <span class="hljs-keyword">from</span> shop_goods);//查shop_user下有带shop_goods中gid中的值的所有数据
+<span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">where</span> username=<span class="hljs-string">&#x27;李敖&#x27;</span>;//删除表中数据
+<span class="hljs-keyword">update</span> bbs_user <span class="hljs-keyword">set</span> username=<span class="hljs-string">&#x27;安安&#x27;</span>,address=<span class="hljs-string">&#x27;88888&#x27;</span> <span class="hljs-keyword">where</span> id=<span class="hljs-number">1</span>;//把id为<span class="hljs-number">1</span>的数据的username字段改为安安，address字段改为<span class="hljs-number">88888</span></code></pre>
             </div>
             <hr>
             <div>
@@ -271,13 +276,13 @@ update bbs_user <span class="hljs-keyword">set</span> username=<span class="hljs
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/命令/">命令</a>
+                      <a class="hover-with-bg" href="/tags/%E5%91%BD%E4%BB%A4/">命令</a>
                     
                   </div>
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">

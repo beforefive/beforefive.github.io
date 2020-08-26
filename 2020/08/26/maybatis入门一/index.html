@@ -5,46 +5,51 @@
 
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content>
+  <meta name="description" content="">
   <meta name="author" content="beforefive">
-  <meta name="keywords" content>
+  <meta name="keywords" content="">
   <title>MyBatis入门一 - beforefive&#39;s blog</title>
 
-  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
 
-  <link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css">
-  <link rel="stylesheet" href="/lib/hint/hint.min.css">
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
     
-    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css">
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
   
 
   
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
+
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+
+
 
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
 
-<link rel="stylesheet" href="/css/main.css">
+
+<link  rel="stylesheet" href="/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
 
-  <script src="/js/utils.js"></script>
-  <script src="/js/color-schema.js"></script>
-</head>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
 
 
 <body>
@@ -176,7 +181,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      16
+      17
        分钟
     </span>
   
@@ -213,13 +218,13 @@
 <a id="more"></a>
 
 <h1 id="MyBatis简要了解"><a href="#MyBatis简要了解" class="headerlink" title="MyBatis简要了解"></a>MyBatis简要了解</h1><blockquote>
-<p>MyBatis 本是<a href="https://baike.baidu.com/item/apache/6265" target="_blank" rel="noopener">apache</a>的一个开源项目<a href="https://baike.baidu.com/item/iBatis" target="_blank" rel="noopener">iBatis</a>, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。</p>
-<p>iBATIS一词来源于“internet”和“abatis”的组合，是一个基于Java的<a href="https://baike.baidu.com/item/持久层/3584971" target="_blank" rel="noopener">持久层</a>框架。iBATIS提供的持久层框架包括SQL Maps和Data Access Objects（DAOs）</p>
+<p>MyBatis 本是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/apache/6265">apache</a>的一个开源项目<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/iBatis">iBatis</a>, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。2013年11月迁移到Github。</p>
+<p>iBATIS一词来源于“internet”和“abatis”的组合，是一个基于Java的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/持久层/3584971">持久层</a>框架。iBATIS提供的持久层框架包括SQL Maps和Data Access Objects（DAOs）</p>
 </blockquote>
 <ul>
 <li>MyBatis是一个 基于Java的持久层框架，它内部封装Jdbc，使开发者只需要关注SQL语句本身，不需关注处理加载驱动、创建连接、创建statement等过程。其通过XML或注解的方式配置所需的statement，通过Java对象和statement中的SQL的动态参数进行映射生成最终的SQL语句，最后由MyBatis框架执行SQL语句并将结果映射为Java对象并返回。</li>
 </ul>
-<h1 id="MyBatis框架快速入门"><a href="#MyBatis框架快速入门" class="headerlink" title="MyBatis框架快速入门"></a>MyBatis框架快速入门</h1><h2 id="下载-MyBatis-框架"><a href="#下载-MyBatis-框架" class="headerlink" title="下载 MyBatis 框架"></a>下载 MyBatis 框架</h2><p>下载地址：地址：<a href="https://github.com/mybatis/mybatis-3（本次使用的是3.4.5版本）" target="_blank" rel="noopener">https://github.com/mybatis/mybatis-3（本次使用的是3.4.5版本）</a></p>
+<h1 id="MyBatis框架快速入门"><a href="#MyBatis框架快速入门" class="headerlink" title="MyBatis框架快速入门"></a>MyBatis框架快速入门</h1><h2 id="下载-MyBatis-框架"><a href="#下载-MyBatis-框架" class="headerlink" title="下载 MyBatis 框架"></a>下载 MyBatis 框架</h2><p>下载地址：地址：<a target="_blank" rel="noopener" href="https://github.com/mybatis/mybatis-3（本次使用的是3.4.5版本）">https://github.com/mybatis/mybatis-3（本次使用的是3.4.5版本）</a></p>
 <h2 id="Maven-导入坐标"><a href="#Maven-导入坐标" class="headerlink" title="Maven 导入坐标"></a>Maven 导入坐标</h2><p>在pom.xml文件中导入坐标（同时要导入mysql-jdbc-java坐标）</p>
 <pre><code class="hljs XML"> <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
  <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
@@ -247,6 +252,8 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
  <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span></code></pre>
 
+
+
 <h2 id="工程目录结构"><a href="#工程目录结构" class="headerlink" title="工程目录结构"></a>工程目录结构</h2><p><img src="https://img-blog.csdnimg.cn/20200824103211890.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3BpbmVfZTM=,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="img"></p>
 <h2 id="User表结构"><a href="#User表结构" class="headerlink" title="User表结构"></a>User表结构</h2><p><img src="https://img-blog.csdnimg.cn/20200824145319447.png" srcset="/img/loading.gif" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" srcset="/img/loading.gif" alt="点击并拖拽以移动"></p>
 <h2 id="实体类User"><a href="#实体类User" class="headerlink" title="实体类User"></a>实体类User</h2><p>实现<strong>Serializable</strong>接口，成员变量声明使用包装类。这里省略了getter，setter方法还有toString方法。</p>
@@ -262,63 +269,70 @@
         <span class="hljs-keyword">return</span> accounts;
     &#125;</code></pre>
 
+
+
 <h2 id="持久层IUserDao"><a href="#持久层IUserDao" class="headerlink" title="持久层IUserDao"></a>持久层IUserDao</h2><p>放在src. main.java.cn.pine.dao下，声明操作数据库的方法</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IUserDao</span> </span>&#123;
     <span class="hljs-function">List&lt;User&gt; <span class="hljs-title">findAll</span><span class="hljs-params">()</span></span>;
 ｝</code></pre>
 
+
 <h2 id="持久层接口的映射IUserDao-xml"><a href="#持久层接口的映射IUserDao-xml" class="headerlink" title="持久层接口的映射IUserDao.xml"></a>持久层接口的映射IUserDao.xml</h2><p>创建位置：必须和持久层接口在相同的包中。这里放在src.main.resources.cn.pine.dao下</p>
 <p>名称：必须以持久层接口名称命名文件名，扩展名是.xml </p>
-<pre><code class="hljs XML"><span class="hljs-meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="hljs-meta">&lt;!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">namespace</span>=<span class="hljs-string">"cn.pine.dao.IUserDao"</span>&gt;</span>
+<pre><code class="hljs XML"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">mapper</span></span>
+<span class="hljs-meta">        <span class="hljs-meta-keyword">PUBLIC</span> <span class="hljs-meta-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span>
+<span class="hljs-meta">        <span class="hljs-meta-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">namespace</span>=<span class="hljs-string">&quot;cn.pine.dao.IUserDao&quot;</span>&gt;</span>
 
 <span class="hljs-comment">&lt;!-- 配置查询所有操作 --&gt;</span> 
- <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"findAll"</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">"cn.pine.domain.User"</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;findAll&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;cn.pine.domain.User&quot;</span>&gt;</span>
             select * from user
   <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">mapper</span>&gt;</span></code></pre>
 
+
+
 <p>SqlMapConfig.xml配置文件</p>
 <p>SqlMapConfig.xml是MyBatis的全局配置文件，可以配置数据源，事务和映射文件等等信息。SqlMapConfig.xml配置文件放在resource目录下。</p>
-<pre><code class="hljs XML"><span class="hljs-meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="hljs-meta">&lt;!DOCTYPE configuration
-        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span>
+<pre><code class="hljs XML"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">configuration</span></span>
+<span class="hljs-meta">        <span class="hljs-meta-keyword">PUBLIC</span> <span class="hljs-meta-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span>
+<span class="hljs-meta">        <span class="hljs-meta-string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
 
     <span class="hljs-comment">&lt;!-- 配置类别名 --&gt;</span> 
     <span class="hljs-tag">&lt;<span class="hljs-name">typeAliases</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">typeAlias</span> <span class="hljs-attr">alias</span>=<span class="hljs-string">"user"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"cn.pine.domain.User"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">package</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"cn.pine.domain.User"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">typeAlias</span> <span class="hljs-attr">alias</span>=<span class="hljs-string">&quot;user&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;cn.pine.domain.User&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">package</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;cn.pine.domain.User&quot;</span>/&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">typeAliases</span>&gt;</span>
 
     <span class="hljs-comment">&lt;!-- 配置环境 --&gt;</span> 
-    <span class="hljs-tag">&lt;<span class="hljs-name">environments</span> <span class="hljs-attr">default</span>=<span class="hljs-string">"mysql"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">environment</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"mysql"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">transactionManager</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"JDBC"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">transactionManager</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">dataSource</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"POOLED"</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"driver"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"com.mysql.jdbc.Driver"</span>/&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"url"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"jdbc:mysql://localhost:3306/mybatis"</span>/&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"root"</span>/&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"root"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">environments</span> <span class="hljs-attr">default</span>=<span class="hljs-string">&quot;mysql&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">environment</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;mysql&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">transactionManager</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;JDBC&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">transactionManager</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">dataSource</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;POOLED&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;driver&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;com.mysql.jdbc.Driver&quot;</span>/&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;url&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;jdbc:mysql://localhost:3306/mybatis&quot;</span>/&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;username&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;root&quot;</span>/&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;password&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;root&quot;</span>/&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">dataSource</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">environment</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">environments</span>&gt;</span>
 
     <span class="hljs-comment">&lt;!-- 配置映射器 --&gt;</span> 
     <span class="hljs-tag">&lt;<span class="hljs-name">mappers</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">resource</span>=<span class="hljs-string">"cn/pine/dao/IUserDao.xml"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">resource</span>=<span class="hljs-string">&quot;cn/pine/dao/IUserDao.xml&quot;</span>/&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">mappers</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span></code></pre>
+
+
 
 <p>测试MyBatis</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
         <span class="hljs-comment">//1.读取配置文件</span>
-        InputStream in = Resources.getResourceAsStream(<span class="hljs-string">"SqlMapConfig.xml"</span>);
+        InputStream in = Resources.getResourceAsStream(<span class="hljs-string">&quot;SqlMapConfig.xml&quot;</span>);
         <span class="hljs-comment">//2.创建 SqlSessionFactory 的构建者对象</span>
         SqlSessionFactoryBuilder builder = <span class="hljs-keyword">new</span> SqlSessionFactoryBuilder();
         <span class="hljs-comment">//3.使用构建者创建工厂对象 SqlSessionFactory</span>
@@ -337,17 +351,19 @@
         in.close();
     &#125; &#125;</code></pre>
 
+
+
 <p>测试结果</p>
 <p><img src="https://img-blog.csdnimg.cn/20200824112841616.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3BpbmVfZTM=,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="img"></p>
 <h2 id="基于注解配置的简单示例"><a href="#基于注解配置的简单示例" class="headerlink" title="基于注解配置的简单示例"></a>基于注解配置的简单示例</h2><p>在持久层接口中添加注解</p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IUserDao</span> </span>&#123;
-    <span class="hljs-meta">@Select</span>(<span class="hljs-string">"select * from user"</span>)
+    <span class="hljs-meta">@Select(&quot;select * from user&quot;)</span>
     <span class="hljs-function">List&lt;User&gt; <span class="hljs-title">findAll</span><span class="hljs-params">()</span></span>;
 &#125;</code></pre>
 
 <p>修改SqlMapConfig.xml，且移除持久层接口的映射xml文件。</p>
 <pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">mappers</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.itheima.dao.IUserDao"</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.itheima.dao.IUserDao&quot;</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">mappers</span>&gt;</span></code></pre>
 
 
@@ -359,7 +375,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/框架/">框架</a>
+                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6/">框架</a>
                     
                   </div>
                 
@@ -375,14 +391,14 @@
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
               
               
                 <div class="post-prevnext row">
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/27/mybatis入门二/">
+                      <a href="/2020/08/27/mybatis%E5%85%A5%E9%97%A8%E4%BA%8C/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">MaBatis入门二</span>
                         <span class="visible-mobile">上一篇</span>
