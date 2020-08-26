@@ -27,7 +27,7 @@
 
   
     
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night.min.css" />
   
 
   
@@ -219,7 +219,7 @@
 
 <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><ul>
 <li><h2 id="简单选择排序"><a href="#简单选择排序" class="headerlink" title="简单选择排序"></a>简单选择排序</h2><p> <strong>从列表第i元素开始算起，遍历之后的元素，把最小值与当前i元素进行交换。</strong></p>
-<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">select_sort</span>(<span class="hljs-params">origin_items, comp=lambda x, y: x&lt; y</span>):</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">select_sort</span>(<span class="hljs-params">origin_items, comp=lambda x, y: x&lt; y</span>):</span>
 	items = origin_items
     <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(items)):
         min_index = i
@@ -227,10 +227,10 @@
             <span class="hljs-keyword">if</span> comp(items[j], items[min_index]):
             	min_index = j
     	items[i], items[min_index] = items[min_index], items[i]
-    <span class="hljs-keyword">return</span> items</code></pre>
+    <span class="hljs-keyword">return</span> items</code></pre></div>
 </li>
 <li><h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p> <strong>两两比较，先把最大值放在最后。有发生元素交换就往反方向比较，把最小值放在前面。</strong></p>
-<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bubble_sort</span>(<span class="hljs-params">origin_items, *, comp=lambda x, y: x &gt; y</span>):</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bubble_sort</span>(<span class="hljs-params">origin_items, *, comp=lambda x, y: x &gt; y</span>):</span>
     items = origin_items
     <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, len(items)):
         swapped = <span class="hljs-literal">False</span>
@@ -246,10 +246,10 @@
                     swapped = <span class="hljs-literal">True</span>
         <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> swapped:
             <span class="hljs-keyword">break</span>
-	<span class="hljs-keyword">return</span> items</code></pre>
+	<span class="hljs-keyword">return</span> items</code></pre></div>
 </li>
 <li><h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p> <strong>把列表一直拆分为两个部分，然后两两合并为有序列表。</strong></p>
-<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">merge_sort</span>(<span class="hljs-params">items, comp=lambda x, y: x &amp;lt;= y</span>):</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">merge_sort</span>(<span class="hljs-params">items, comp=lambda x, y: x &amp;lt;= y</span>):</span>
     &amp;quot;&amp;quot;&amp;quot;归并排序&amp;quot;&amp;quot;&amp;quot;
     <span class="hljs-keyword">if</span> len(items) &amp;lt; <span class="hljs-number">2</span>:
         <span class="hljs-keyword">return</span> items[:]
@@ -271,10 +271,10 @@
             index2 += <span class="hljs-number">1</span>
     items += items1[index1:]
     items += items2[index2:]
-    <span class="hljs-keyword">return</span> items</code></pre>
+    <span class="hljs-keyword">return</span> items</code></pre></div>
 </li>
 <li><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p><strong>选择基准值，将基准值前后元素进行排序。</strong></p>
-<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">quick_sort</span>(<span class="hljs-params">origin_items, comp=lambda x, y: x &lt;= y</span>):</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">quick_sort</span>(<span class="hljs-params">origin_items, comp=lambda x, y: x &lt;= y</span>):</span>
     <span class="hljs-string">&quot;&quot;&quot;快速排序&quot;&quot;&quot;</span>
     items = origin_items[:]
     _quick_sort(items, <span class="hljs-number">0</span>, len(items) - <span class="hljs-number">1</span>, comp)
@@ -298,7 +298,7 @@
             i += <span class="hljs-number">1</span>
             items[i], items[j] = items[j], items[i]
     items[i + <span class="hljs-number">1</span>], items[end] = items[end], items[i + <span class="hljs-number">1</span>]
-    <span class="hljs-keyword">return</span> i + <span class="hljs-number">1</span></code></pre>
+    <span class="hljs-keyword">return</span> i + <span class="hljs-number">1</span></code></pre></div>
 
 
 
@@ -307,25 +307,25 @@
 </ul>
 <h1 id="斐波那契函数"><a href="#斐波那契函数" class="headerlink" title="斐波那契函数"></a>斐波那契函数</h1><ul>
 <li><p><strong>普通形式</strong></p>
-<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fib</span>(<span class="hljs-params">num</span>):</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fib</span>(<span class="hljs-params">num</span>):</span>
 	a, b = <span class="hljs-number">1</span>, <span class="hljs-number">1</span>
 	<span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(num - <span class="hljs-number">1</span>):
 		a, b = b, a + b
-		<span class="hljs-keyword">return</span> a</code></pre>
+		<span class="hljs-keyword">return</span> a</code></pre></div>
 </li>
 <li><p><strong>生成器形式</strong></p>
-<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fib3</span>(<span class="hljs-params">num</span>):</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fib3</span>(<span class="hljs-params">num</span>):</span>
     a, b = <span class="hljs-number">0</span>, <span class="hljs-number">1</span>
     <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(num):
         a, b = b, a + b
         <span class="hljs-keyword">yield</span> a
 <span class="hljs-comment">#打印生成器生成值</span>
 <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> fib(<span class="hljs-number">10</span>):
-	print(x)</code></pre>
+	print(x)</code></pre></div>
 </li>
 <li><p><strong>动态规划</strong></p>
 <p><strong>（建立字典保存可能进行重复运算的中间结果（空间换时间））</strong></p>
-<pre><code class="hljs python"><span class="hljs-keyword">from</span> contextlib <span class="hljs-keyword">import</span> contextmanager
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">from</span> contextlib <span class="hljs-keyword">import</span> contextmanager
 <span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> perf_counter
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fib</span>(<span class="hljs-params">num, results=&#123;&#125;</span>):</span>
 	<span class="hljs-comment">#assert遇到条件不满足时直接返回错误</span>
@@ -349,13 +349,13 @@
     <span class="hljs-keyword">finally</span>:
         end = perf_counter()
         print(<span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;end - start&#125;</span>秒&#x27;</span>)
-</code></pre>
+</code></pre></div>
 
 
 
 </li>
 </ul>
-<h1 id="贪婪法"><a href="#贪婪法" class="headerlink" title="贪婪法"></a>贪婪法</h1><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span>
+<h1 id="贪婪法"><a href="#贪婪法" class="headerlink" title="贪婪法"></a>贪婪法</h1><div class="hljs"><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span>
 <span class="hljs-string">贪婪法：在对问题求解时，总是做出在当前看来是最好的选择，</span>
 <span class="hljs-string">不追求最优解，快速找到满意解。</span>
 <span class="hljs-string">&quot;&quot;&quot;</span>
@@ -400,9 +400,9 @@
 
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
-    main()</code></pre>
+    main()</code></pre></div>
 
-<h1 id="递归回溯"><a href="#递归回溯" class="headerlink" title="递归回溯"></a>递归回溯</h1><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span>
+<h1 id="递归回溯"><a href="#递归回溯" class="headerlink" title="递归回溯"></a>递归回溯</h1><div class="hljs"><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span>
 <span class="hljs-string">递归回溯法：叫称为试探法，按选优条件向前搜索，当搜索到某一步，</span>
 <span class="hljs-string">发现原先选择并不优或达不到目标时，就退回一步重新选择。</span>
 <span class="hljs-string">经典问题：骑士巡逻</span>
@@ -448,11 +448,11 @@ total = <span class="hljs-number">0</span>
 
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
-    main()</code></pre>
+    main()</code></pre></div>
 
 
 
-<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span>
+<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><div class="hljs"><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span>
 <span class="hljs-string">装饰类的装饰器 - 单例模式 - 一个类只能创建出唯一的对象</span>
 <span class="hljs-string">上下文语法：</span>
 <span class="hljs-string">__enter__ / __exit__</span>
@@ -499,11 +499,11 @@ total = <span class="hljs-number">0</span>
 
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
-    main()</code></pre>
+    main()</code></pre></div>
 
 
 
-<h1 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h1><pre><code class="hljs python"><span class="hljs-keyword">from</span> abc <span class="hljs-keyword">import</span> ABCMeta, abstractmethod
+<h1 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h1><div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">from</span> abc <span class="hljs-keyword">import</span> ABCMeta, abstractmethod
 
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span>(<span class="hljs-params">metaclass=ABCMeta</span>):</span>
@@ -578,11 +578,11 @@ total = <span class="hljs-number">0</span>
 
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
-    main()</code></pre>
+    main()</code></pre></div>
 
 
 
-<h1 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h1><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum, unique
+<h1 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h1><div class="hljs"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum, unique
 <span class="hljs-keyword">import</span> random
 
 
@@ -672,12 +672,12 @@ total = <span class="hljs-number">0</span>
 
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
-    main()</code></pre>
+    main()</code></pre></div>
 
 
 
 <h1 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h1><p><strong>生成可迭代序列的工具模块</strong></p>
-<pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span>
 <span class="hljs-string">迭代器 - __iter__ / __next__</span>
 <span class="hljs-string">itertools - 生成可迭代序列的工具模块</span>
 <span class="hljs-string">&quot;&quot;&quot;</span>
@@ -755,9 +755,9 @@ total = <span class="hljs-number">0</span>
 
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
-    main()</code></pre>
+    main()</code></pre></div>
 
-<h1 id="元"><a href="#元" class="headerlink" title="元"></a>元</h1><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span>
+<h1 id="元"><a href="#元" class="headerlink" title="元"></a>元</h1><div class="hljs"><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span>
 <span class="hljs-string">元 - meta</span>
 <span class="hljs-string">元数据 - 描述数据的数据 - metadata</span>
 <span class="hljs-string">元类 - 描述类的类 - metaclass - 继承自type</span>
@@ -806,9 +806,9 @@ total = <span class="hljs-number">0</span>
 
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
-    main()</code></pre>
+    main()</code></pre></div>
 
-<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span>
+<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><div class="hljs"><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span>
 <span class="hljs-string">多个线程竞争一个资源 - 保护临界资源 - 锁（Lock/RLock）</span>
 <span class="hljs-string">多个线程竞争多个资源（线程数&gt;资源数） - 信号量（Semaphore）</span>
 <span class="hljs-string">多个线程的调度 - 暂停线程执行/唤醒等待中的线程 - Condition</span>
@@ -875,9 +875,9 @@ total = <span class="hljs-number">0</span>
 
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
-    main()</code></pre>
+    main()</code></pre></div>
 
-<h1 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h1><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span>
+<h1 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h1><div class="hljs"><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span>
 <span class="hljs-string">多进程和进程池的使用</span>
 <span class="hljs-string">多线程因为GIL的存在不能够发挥CPU的多核特性</span>
 <span class="hljs-string">对于计算密集型任务应该考虑使用多进程</span>
@@ -926,9 +926,9 @@ PRIMES = [
 
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
-    main()</code></pre>
+    main()</code></pre></div>
 
-<h1 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h1><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span>
+<h1 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h1><div class="hljs"><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span>
 <span class="hljs-string">协程（coroutine）- 可以在需要时进行切换的相互协作的子程序</span>
 <span class="hljs-string">&quot;&quot;&quot;</span>
 <span class="hljs-keyword">import</span> asyncio
@@ -974,9 +974,9 @@ PRIMES = [
 
 
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
-   main()</code></pre>
+   main()</code></pre></div>
 
-<h1 id="异步HTTP访问"><a href="#异步HTTP访问" class="headerlink" title="异步HTTP访问"></a>异步HTTP访问</h1><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span>
+<h1 id="异步HTTP访问"><a href="#异步HTTP访问" class="headerlink" title="异步HTTP访问"></a>异步HTTP访问</h1><div class="hljs"><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span>
 <span class="hljs-string">aiohttp - 异步HTTP网络访问</span>
 <span class="hljs-string">异步I/O（异步编程）- 只使用一个线程（单线程）来处理用户请求</span>
 <span class="hljs-string">用户请求一旦被接纳，剩下的都是I/O操作，通过多路I/O复用也可以达到并发的效果</span>
@@ -1012,7 +1012,7 @@ PRIMES = [
 <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
     loop = asyncio.get_event_loop()
     loop.run_until_complete(main())
-    loop.close()</code></pre>
+    loop.close()</code></pre></div>
 
 
             </div>

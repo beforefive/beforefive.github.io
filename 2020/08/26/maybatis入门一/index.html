@@ -27,7 +27,7 @@
 
   
     
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night.min.css" />
   
 
   
@@ -226,7 +226,7 @@
 </ul>
 <h1 id="MyBatis框架快速入门"><a href="#MyBatis框架快速入门" class="headerlink" title="MyBatis框架快速入门"></a>MyBatis框架快速入门</h1><h2 id="下载-MyBatis-框架"><a href="#下载-MyBatis-框架" class="headerlink" title="下载 MyBatis 框架"></a>下载 MyBatis 框架</h2><p>下载地址：地址：<a target="_blank" rel="noopener" href="https://github.com/mybatis/mybatis-3（本次使用的是3.4.5版本）">https://github.com/mybatis/mybatis-3（本次使用的是3.4.5版本）</a></p>
 <h2 id="Maven-导入坐标"><a href="#Maven-导入坐标" class="headerlink" title="Maven 导入坐标"></a>Maven 导入坐标</h2><p>在pom.xml文件中导入坐标（同时要导入mysql-jdbc-java坐标）</p>
-<pre><code class="hljs XML"> <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
+<div class="hljs"><pre><code class="hljs XML"> <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
  <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.mybatis<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mybatis<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
@@ -250,14 +250,14 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>log4j<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.2.12<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span></code></pre>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span></code></pre></div>
 
 
 
 <h2 id="工程目录结构"><a href="#工程目录结构" class="headerlink" title="工程目录结构"></a>工程目录结构</h2><p><img src="https://img-blog.csdnimg.cn/20200824103211890.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3BpbmVfZTM=,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="img"></p>
 <h2 id="User表结构"><a href="#User表结构" class="headerlink" title="User表结构"></a>User表结构</h2><p><img src="https://img-blog.csdnimg.cn/20200824145319447.png" srcset="/img/loading.gif" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" srcset="/img/loading.gif" alt="点击并拖拽以移动"></p>
 <h2 id="实体类User"><a href="#实体类User" class="headerlink" title="实体类User"></a>实体类User</h2><p>实现<strong>Serializable</strong>接口，成员变量声明使用包装类。这里省略了getter，setter方法还有toString方法。</p>
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span> </span>&#123;
     <span class="hljs-keyword">private</span> Integer id;
     <span class="hljs-keyword">private</span> String username;
     <span class="hljs-keyword">private</span> Date birthday;
@@ -267,19 +267,19 @@
 
     <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Account&gt; <span class="hljs-title">getAccounts</span><span class="hljs-params">()</span> </span>&#123;
         <span class="hljs-keyword">return</span> accounts;
-    &#125;</code></pre>
+    &#125;</code></pre></div>
 
 
 
 <h2 id="持久层IUserDao"><a href="#持久层IUserDao" class="headerlink" title="持久层IUserDao"></a>持久层IUserDao</h2><p>放在src. main.java.cn.pine.dao下，声明操作数据库的方法</p>
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IUserDao</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IUserDao</span> </span>&#123;
     <span class="hljs-function">List&lt;User&gt; <span class="hljs-title">findAll</span><span class="hljs-params">()</span></span>;
-｝</code></pre>
+｝</code></pre></div>
 
 
 <h2 id="持久层接口的映射IUserDao-xml"><a href="#持久层接口的映射IUserDao-xml" class="headerlink" title="持久层接口的映射IUserDao.xml"></a>持久层接口的映射IUserDao.xml</h2><p>创建位置：必须和持久层接口在相同的包中。这里放在src.main.resources.cn.pine.dao下</p>
 <p>名称：必须以持久层接口名称命名文件名，扩展名是.xml </p>
-<pre><code class="hljs XML"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="hljs"><pre><code class="hljs XML"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">mapper</span></span>
 <span class="hljs-meta">        <span class="hljs-meta-keyword">PUBLIC</span> <span class="hljs-meta-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span>
 <span class="hljs-meta">        <span class="hljs-meta-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span>
@@ -289,13 +289,13 @@
  <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;findAll&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;cn.pine.domain.User&quot;</span>&gt;</span>
             select * from user
   <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">mapper</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">mapper</span>&gt;</span></code></pre></div>
 
 
 
 <p>SqlMapConfig.xml配置文件</p>
 <p>SqlMapConfig.xml是MyBatis的全局配置文件，可以配置数据源，事务和映射文件等等信息。SqlMapConfig.xml配置文件放在resource目录下。</p>
-<pre><code class="hljs XML"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="hljs"><pre><code class="hljs XML"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">configuration</span></span>
 <span class="hljs-meta">        <span class="hljs-meta-keyword">PUBLIC</span> <span class="hljs-meta-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span>
 <span class="hljs-meta">        <span class="hljs-meta-string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span>
@@ -324,12 +324,12 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">mappers</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">resource</span>=<span class="hljs-string">&quot;cn/pine/dao/IUserDao.xml&quot;</span>/&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">mappers</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span></code></pre></div>
 
 
 
 <p>测试MyBatis</p>
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;
         <span class="hljs-comment">//1.读取配置文件</span>
         InputStream in = Resources.getResourceAsStream(<span class="hljs-string">&quot;SqlMapConfig.xml&quot;</span>);
@@ -349,22 +349,22 @@
         <span class="hljs-comment">//7.释放资源</span>
         session.close();
         in.close();
-    &#125; &#125;</code></pre>
+    &#125; &#125;</code></pre></div>
 
 
 
 <p>测试结果</p>
 <p><img src="https://img-blog.csdnimg.cn/20200824112841616.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3BpbmVfZTM=,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="img"></p>
 <h2 id="基于注解配置的简单示例"><a href="#基于注解配置的简单示例" class="headerlink" title="基于注解配置的简单示例"></a>基于注解配置的简单示例</h2><p>在持久层接口中添加注解</p>
-<pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IUserDao</span> </span>&#123;
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IUserDao</span> </span>&#123;
     <span class="hljs-meta">@Select(&quot;select * from user&quot;)</span>
     <span class="hljs-function">List&lt;User&gt; <span class="hljs-title">findAll</span><span class="hljs-params">()</span></span>;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <p>修改SqlMapConfig.xml，且移除持久层接口的映射xml文件。</p>
-<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">mappers</span>&gt;</span>
+<div class="hljs"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">mappers</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.itheima.dao.IUserDao&quot;</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">mappers</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">mappers</span>&gt;</span></code></pre></div>
 
 
             </div>

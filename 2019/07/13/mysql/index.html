@@ -27,7 +27,7 @@
 
   
     
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night.min.css" />
   
 
   
@@ -217,7 +217,7 @@
               <p>这次记录理解学习mysql命令</p>
 <a id="more"></a>
 
-<pre><code class="hljs pgsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">database</span> xx;//创建数据库xx
+<div class="hljs"><pre><code class="hljs pgsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">database</span> xx;//创建数据库xx
 <span class="hljs-keyword">show</span> databases;查看数据库
 <span class="hljs-keyword">drop</span> <span class="hljs-keyword">database</span> xx;删除数据库
 
@@ -259,7 +259,7 @@ use xx;//进入xx数据库
 <span class="hljs-keyword">select</span> shop_user.username <span class="hljs-keyword">from</span> shop_user <span class="hljs-keyword">right join</span> shop_goods <span class="hljs-keyword">on</span> shop_user.gid = shop_goods.gid;//右联查询，以右表为基准
 <span class="hljs-keyword">select</span> *<span class="hljs-keyword">from</span> shop_user <span class="hljs-keyword">where</span> gid <span class="hljs-keyword">in</span>(<span class="hljs-keyword">select</span> gid <span class="hljs-keyword">from</span> shop_goods);//查shop_user下有带shop_goods中gid中的值的所有数据
 <span class="hljs-keyword">delete</span> <span class="hljs-keyword">from</span> bbs_user <span class="hljs-keyword">where</span> username=<span class="hljs-string">&#x27;李敖&#x27;</span>;//删除表中数据
-<span class="hljs-keyword">update</span> bbs_user <span class="hljs-keyword">set</span> username=<span class="hljs-string">&#x27;安安&#x27;</span>,address=<span class="hljs-string">&#x27;88888&#x27;</span> <span class="hljs-keyword">where</span> id=<span class="hljs-number">1</span>;//把id为<span class="hljs-number">1</span>的数据的username字段改为安安，address字段改为<span class="hljs-number">88888</span></code></pre>
+<span class="hljs-keyword">update</span> bbs_user <span class="hljs-keyword">set</span> username=<span class="hljs-string">&#x27;安安&#x27;</span>,address=<span class="hljs-string">&#x27;88888&#x27;</span> <span class="hljs-keyword">where</span> id=<span class="hljs-number">1</span>;//把id为<span class="hljs-number">1</span>的数据的username字段改为安安，address字段改为<span class="hljs-number">88888</span></code></pre></div>
             </div>
             <hr>
             <div>
