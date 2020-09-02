@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="beforefive">
   <meta name="keywords" content="">
-  <title>标签 - beforefive&#39;s blog</title>
+  <title>归档 - beforefive&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -43,7 +43,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -166,9 +166,40 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="text-center tagcloud">
-  <a href="/tags/Java/" style="font-size: 30px; color: #337ab7">Java</a> <a href="/tags/MyBatis/" style="font-size: 22.5px; color: #779bd3">MyBatis</a> <a href="/tags/Spring/" style="font-size: 26.25px; color: #558ac5">Spring</a> <a href="/tags/SpringMVC/" style="font-size: 18.75px; color: #99abe0">SpringMVC</a> <a href="/tags/%E5%91%BD%E4%BB%A4/" style="font-size: 15px; color: #bbe">命令</a> <a href="/tags/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" style="font-size: 15px; color: #bbe">语言学习</a>
+<div class="list-group">
+  <p class="h4">共计 13 篇文章</p>
+  <hr>
+  
+    
+      
+      <p class="h5">2020</p>
+    
+    <a href="/2020/08/26/maybatis%E5%85%A5%E9%97%A8%E4%B8%80/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">MyBatis入门一</span>
+      <time style="float: right;">08-26</time>
+    </a>
+  
+    
+    <a href="/2020/08/26/pyhthonExample16-20/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">Python-day16-20</span>
+      <time style="float: right;">08-26</time>
+    </a>
+  
 </div>
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/archives/2020/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
 
               </div>
             </div>
@@ -259,7 +290,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "标签&nbsp;",
+        "归档&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
