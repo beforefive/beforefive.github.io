@@ -1,0 +1,684 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Wlogo.png">
+  <link rel="icon" type="image/png" href="/img/Wlogo.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="beforefive">
+  <meta name="keywords" content="">
+  <title>Spring Cloud入门 - beforefive&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>BeforeFvie</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/Blue.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-10-25 18:52" pubdate>
+      2020年10月25日 晚上
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">Spring Cloud入门</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <p>微服务</p>
+<a id="more"></a>
+
+<h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h1><blockquote>
+<p> Spring Cloud 是微服务系统架构的一站式解决方案，在平时我们构建微服务的过程中需要做如 <strong>服务发现注册</strong> 、<strong>配置中心</strong> 、<strong>消息总线</strong> 、<strong>负载均衡</strong> 、<strong>断路器</strong> 、<strong>数据监控</strong> 等操作，而 Spring Cloud 为我们提供了一套简易的编程模型，使我们能在 Spring Boot 的基础上轻松地实现微服务项目的构建。</p>
+</blockquote>
+<p><strong>主要组件：</strong></p>
+<ul>
+<li>Eureka：服务治理组件，包含服务注册中心，服务注册与发现机制的实现。（服务治理，服务注册/发现） </li>
+<li>Zuul：网关组件，提供智能路由，访问过滤功能 </li>
+<li>Ribbon：客户端负载均衡的服务调用组件（客户端负载） </li>
+<li>Feign：服务调用，给予Ribbon和Hystrix的声明式服务调用组件 （声明式服务调用） </li>
+<li>Hystrix：容错管理组件，实现断路器模式，帮助服务依赖中出现的延迟和为故障提供强大的容错能力。(熔断、断路器，容错) </li>
+</ul>
+<p><strong>架构图：</strong></p>
+<p><img src="https://s1.ax1x.com/2020/10/25/BmaL1P.png" srcset="/img/loading.gif" alt="BmaL1P.png"></p>
+<hr>
+<h1 id="2-组件"><a href="#2-组件" class="headerlink" title="2 组件"></a>2 组件</h1><h2 id="2-1-Eureka"><a href="#2-1-Eureka" class="headerlink" title="2.1 Eureka"></a>2.1 Eureka</h2><p><code>Eureka</code> 主要分为三个角色：注册中心（<code>Eureka Server</code>)，服务提供者（<code>Eureka Client Provider</code>），服务消费者（<code>Eureka Client Consumer</code>），类似的服务发现还有<code>Zookeeper</code>，<code>Consul</code>。</p>
+<blockquote>
+<p><code>Eureka</code> 客户端从服务器获取注册表信息，并将其缓存在本地。客户端会使用该信息查找其他服务，从而进行远程调用。该注册列表信息定期（每30秒钟）更新一次。每次返回注册列表信息可能与 <code>Eureka</code> 客户端的缓存信息不同, <code>Eureka</code> 客户端自动处理。如果由于某种原因导致注册列表信息不能及时匹配，<code>Eureka</code> 客户端则会重新获取整个注册表信息。 <code>Eureka</code> 服务器缓存注册列表信息，整个注册表以及每个应用程序的信息进行了压缩，压缩内容和没有压缩的内容完全相同。<code>Eureka</code> 客户端和 <code>Eureka</code> 服务器可以使用JSON / XML格式进行通讯。在默认的情况下 <code>Eureka</code> 客户端使用压缩 <code>JSON</code> 格式来获取注册列表的信息。正常情况下，如果 <code>Eureka Server</code> 在90秒没有收到 <code>Eureka</code> 客户的续约，它会将实例从其注册表中删除。</p>
+</blockquote>
+<h3 id="2-1-1-操作"><a href="#2-1-1-操作" class="headerlink" title="2.1.1 操作"></a>2.1.1 操作</h3><ol>
+<li><p>创建<code>Eureka Server</code>，可以通过idea内置快速搭建<code>spring boot</code>项目功能创建<code>Eureka Server</code>。导入<code>SpringClooud</code>依赖，在配置文件中配置 <code>server.port</code>，<code>spring.application.name</code>，<code>eureka.client.service-url.defaultZone</code>(如<code>http://127.0.0.1:$&#123;server.port&#125;/eureka</code>)。在引导类上加上<code>@EnableEurekaServe</code>r注解。</p>
+</li>
+<li><p>不管是提供者还是消费者都是属于客户端的角色，注意点都差不多，导入依赖后，配置文件中都要配置：<code>server.port</code>，<code>spring.application.name</code>，<code>eureka.client.service-url.defaultZone</code>，引导类上加入<code>@EnableDiscoveryClient</code>注解。</p>
+</li>
+</ol>
+<p>​    3.做高可用的<code>Eureka Server</code>的话可以使用互相注册的方式实现双<code>Eureka Server</code>，是两个<code>Eureka Server</code>的<code>eureka.client.service-url.defaultZone</code>为对方的 <code>server.port</code>，而在客户端的<code>eureka.client.service-url.defaultZone</code>中写上所有<code>Eureka Server</code>的地址。</p>
+<h2 id="2-2-Ribbon"><a href="#2-2-Ribbon" class="headerlink" title="2.2 Ribbon"></a>2.2 Ribbon</h2><p><code>Eureka</code>集成了<code>Ribbon</code>可以通过直接修改代码使用<code>Ribbon</code>。通过@<code>LoadBalanced</code>注解来使用。（在消费方）</p>
+<p>负载均衡策略可以通过配置文件中调整：</p>
+<div class="hljs"><pre><code class="hljs avrasm"><span class="hljs-symbol">providerName:</span>
+  ribbon:
+    NFLoadBalancerRuleClassName: <span class="hljs-meta">#选一种</span>
+    <span class="hljs-keyword">com</span>.netflix.loadbalancer.RandomRule <span class="hljs-meta">#随机</span>
+    <span class="hljs-keyword">com</span>.netflix.loadbalancer.RoundRobinRule <span class="hljs-meta">#轮询</span></code></pre></div>
+
+<h3 id="2-3-Hystrix"><a href="#2-3-Hystrix" class="headerlink" title="2.3 Hystrix"></a>2.3 Hystrix</h3><h3 id="2-3-1-操作"><a href="#2-3-1-操作" class="headerlink" title="2.3.1 操作"></a>2.3.1 操作</h3><p>1.引入<code>hystrix</code>依赖，在消费方引导类加<code>@SpringCloudApplication</code>注解（<code>@SpringbootApplication</code>，<code>@EnableDiscoveryClient</code>，<code>@EnableCircuitBreaker</code>三个注解的组合注解）</p>
+<p>2.在消费方<code>Controller</code>的方法上加 <code>@HystrixCommand(fallbackMethod = &quot;ControllerMethod&quot;)</code>注解，而在Controller加上同名同参同返回值的方法。</p>
+<p>3.当然也可以设置默认的<code>fallback</code>方法，不过要在<code>Controller</code>类上加<code>@DefaultProperties(defaultFallback = &quot;defaultFallBack&quot;)</code>，在类上指明统一的失败降级方法</p>
+<p>4.<code>hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds</code>来设置<code>Hystrix</code>超时时间。</p>
+<h3 id="2-3-2-熔断状态"><a href="#2-3-2-熔断状态" class="headerlink" title="2.3.2 熔断状态"></a>2.3.2 熔断状态</h3><p>熔断状态机3个状态：</p>
+<ul>
+<li>Closed：关闭状态，所有请求都正常访问。</li>
+<li>Open：打开状态，所有请求都会被降级。Hystix会对请求情况计数，当一定时间内失败请求百分比达到阈值，则触发熔断，断路器会完全打开。默认失败比例的阈值是50%，请求次数最少不低于20次。</li>
+<li>Half Open：半开状态，open状态不是永久的，打开后会进入休眠时间（默认是5S）。随后断路器会自动进入半开状态。此时会释放部分请求通过，若这些请求都是健康的，则会完全关闭断路器，否则继续保持打开，再次进行休眠计时。</li>
+</ul>
+<h2 id="2-4-Feign"><a href="#2-4-Feign" class="headerlink" title="2.4 Feign"></a>2.4 Feign</h2><p>Feign可以把Rest的请求进行隐藏，伪装成类似<code>SpringMVC</code>的~一样。不用再自己拼接url，拼接参数等等操作，一切都交给Feign去做。（<code>feign</code>已经自动集成了<code>Ribbon</code>负载均衡的<code>RestTemplate</code>）</p>
+<h3 id="2-4-1-操作"><a href="#2-4-1-操作" class="headerlink" title="2.4.1 操作"></a>2.4.1 操作</h3><p>1.消费方导入<code>openfeign</code>依赖</p>
+<p>2.启动类上加入@<code>EnableFeignClients</code> 注解</p>
+<p>3.创建一个接口</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-meta">@FeignClient(value = &quot;providerNmae&quot;)</span> <span class="hljs-comment">// 标注该类是一个feign接口</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UserClient</span> </span>&#123;
+
+    <span class="hljs-meta">@GetMapping(&quot;user/&#123;id&#125;&quot;)</span>
+    <span class="hljs-function">User <span class="hljs-title">queryById</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> Long id)</span></span>;
+&#125;</code></pre></div>
+
+<p>4.在<code>Controller</code>中调用</p>
+<div class="hljs"><pre><code class="hljs JAVA"><span class="hljs-meta">@Controller</span>
+<span class="hljs-meta">@RequestMapping(&quot;consumer/user&quot;)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserController</span> </span>&#123;
+
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-keyword">private</span> UserClient userClient;
+
+    <span class="hljs-meta">@GetMapping</span>
+    <span class="hljs-meta">@ResponseBody</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> User <span class="hljs-title">queryUserById</span><span class="hljs-params">(<span class="hljs-meta">@RequestParam(&quot;id&quot;)</span> Long id)</span></span>&#123;
+        User user = <span class="hljs-keyword">this</span>.userClient.queryUserById(id);
+        <span class="hljs-keyword">return</span> user;
+    &#125;
+&#125;</code></pre></div>
+
+<h3 id="2-4-2-对Hystrix的支持"><a href="#2-4-2-对Hystrix的支持" class="headerlink" title="2.4.2 对Hystrix的支持"></a>2.4.2 对Hystrix的支持</h3><p>1.消费中配置：</p>
+<div class="hljs"><pre><code class="hljs yml"><span class="hljs-attr">feign:</span>
+  <span class="hljs-attr">hystrix:</span>
+    <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># 开启Feign的熔断功能</span></code></pre></div>
+
+<p>2.创建类实现有<code>@FeignClient</code>的接口</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-meta">@Component</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserClientFallback</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">UserClient</span> </span>&#123;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> User <span class="hljs-title">queryById</span><span class="hljs-params">(Long id)</span> </span>&#123;
+        User user = <span class="hljs-keyword">new</span> User();
+        user.setUserName(<span class="hljs-string">&quot;服务器繁忙，请稍后再试！&quot;</span>);
+        <span class="hljs-keyword">return</span> user;
+    &#125;
+&#125;</code></pre></div>
+
+<p>3.修改有<code>@FeignClient</code>的接口</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-meta">@FeignClient(value = &quot;service-provider&quot;, fallback = UserClientFallback.class)</span> <span class="hljs-comment">// 标注该类是一个feign接口</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UserClient</span> </span>&#123;
+
+    <span class="hljs-meta">@GetMapping(&quot;user/&#123;id&#125;&quot;)</span>
+    <span class="hljs-function">User <span class="hljs-title">queryUserById</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> Long id)</span></span>;
+&#125;</code></pre></div>
+
+<h2 id="2-5-Zuul"><a href="#2-5-Zuul" class="headerlink" title="2.5 Zuul"></a>2.5 Zuul</h2><p>不管是来自于客户端（PC或移动端）的请求，还是服务内部调用。一切对服务的请求都会经过Zuul这个网关，然后再由网关来实现 鉴权、动态路由等等操作。Zuul就是我们服务的统一入口。</p>
+<h3 id="2-5-1-操作"><a href="#2-5-1-操作" class="headerlink" title="2.5.1 操作"></a>2.5.1 操作</h3><p>1.配置：</p>
+<div class="hljs"><pre><code class="hljs yml"><span class="hljs-attr">server:</span>
+  <span class="hljs-attr">port:</span> <span class="hljs-number">10010</span> <span class="hljs-comment">#服务端口</span>
+<span class="hljs-attr">spring:</span>
+  <span class="hljs-attr">application:</span>
+    <span class="hljs-attr">name:</span> <span class="hljs-string">api-gateway</span> <span class="hljs-comment">#指定服务名</span>
+<span class="hljs-attr">eureka:</span> <span class="hljs-comment">#要加入Eureka依赖</span>
+  <span class="hljs-attr">client:</span>
+    <span class="hljs-attr">registry-fetch-interval-seconds:</span> <span class="hljs-number">5</span> <span class="hljs-comment"># 获取服务列表的周期：5s</span>
+    <span class="hljs-attr">service-url:</span>
+      <span class="hljs-attr">defaultZone:</span> <span class="hljs-string">http://127.0.0.1:10086/eureka</span>	
+<span class="hljs-attr">zuul:</span>
+  <span class="hljs-attr">routes:</span>
+    <span class="hljs-attr">service-provider:</span> <span class="hljs-string">/service-provider/**</span> <span class="hljs-comment"># 这里是映射路径</span></code></pre></div>
+
+<p>2.引导类加入@<code>EnableZuulProxy</code>，<code>@EnableDiscoveryClient</code></p>
+<p>3.也可加入路由前缀，发起请求时要用路有前缀开头</p>
+<div class="hljs"><pre><code class="hljs yml"><span class="hljs-attr">zuul:</span>
+  <span class="hljs-attr">routes:</span>
+    <span class="hljs-attr">service-provider:</span> <span class="hljs-string">/service-provider/**</span>
+    <span class="hljs-attr">service-consumer:</span> <span class="hljs-string">/service-consumer/**</span>
+  <span class="hljs-attr">prefix:</span> <span class="hljs-string">/api</span> <span class="hljs-comment"># 添加路由前缀</span></code></pre></div>
+
+<h3 id="2-5-2-过滤器"><a href="#2-5-2-过滤器" class="headerlink" title="2.5.2 过滤器"></a>2.5.2 过滤器</h3><p>通过过滤器实现请求鉴权。</p>
+<div class="hljs"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> ZuulFilter implements IZuulFilter&#123;
+
+    <span class="hljs-function"><span class="hljs-keyword">abstract</span> <span class="hljs-keyword">public</span> String <span class="hljs-title">filterType</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">abstract</span> <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">filterOrder</span><span class="hljs-params">()</span></span>;
+    
+    <span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">shouldFilter</span><span class="hljs-params">()</span></span>;<span class="hljs-comment">// 来自IZuulFilter</span>
+
+    <span class="hljs-function">Object <span class="hljs-title">run</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ZuulException</span>;<span class="hljs-comment">// IZuulFilter</span>
+&#125;</code></pre></div>
+
+<ul>
+<li><code>shouldFilter``：返回一个</code>Boolean`值，判断该过滤器是否需要执行。返回true执行，返回false不执行。</li>
+<li><code>run</code>：过滤器的具体业务逻辑。</li>
+<li><code>filterType</code>：返回字符串，代表过滤器的类型。包含以下4种：<ul>
+<li><code>pre</code>：请求在被路由之前执行</li>
+<li><code>route</code>：在路由请求时调用</li>
+<li><code>post</code>：在route和errror过滤器之后调用</li>
+<li><code>error</code>：处理请求时发生错误调用</li>
+</ul>
+</li>
+<li><code>filterOrder</code>：通过返回的int值来定义过滤器的执行顺序，数字越小优先级越高。</li>
+</ul>
+<p><strong>流程：</strong></p>
+<ul>
+<li>请求到达首先会经过pre类型过滤器，而后到达route类型，进行路由，请求就到达真正的服务提供者，执行请求，返回结果后，会到达post过滤器。而后返回响应。</li>
+</ul>
+<p>异常流程：</p>
+<ul>
+<li>整个过程中，pre或者route过滤器出现异常，都会直接进入error过滤器，在error处理完毕后，会将请求交给POST过滤器，最后返回给用户。</li>
+<li>如果是error过滤器自己出现异常，最终也会进入POST过滤器，将最终结果返回给请求客户端。</li>
+<li>如果是POST过滤器出现异常，会跳转到error过滤器，但是与pre和route不同的是，请求不会再到达POST过滤器了。</li>
+</ul>
+<p><strong>使用场景：</strong></p>
+<ul>
+<li>请求鉴权：一般放在pre类型，如果发现没有访问权限，直接就拦截了</li>
+<li>异常处理：一般会在error类型和post类型过滤器中结合来处理。</li>
+<li>服务调用时长统计：pre和post结合使用。</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%A1%86%E6%9E%B6/">框架</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Spring-Clouds/">Spring Clouds</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/09/18/Spring-Boot%E5%85%A5%E9%97%A8%E4%B8%80/">
+                        <span class="hidden-mobile">Spring Boot入门一</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Spring Cloud入门&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 50,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+  
+  
+    <script>
+      !function (e, t, a) {
+        function r() {
+          for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
+          requestAnimationFrame(r)
+        }
+
+        function n() {
+          var t = "function" == typeof e.onclick && e.onclick;
+          e.onclick = function (e) {
+            t && t(), o(e)
+          }
+        }
+
+        function o(e) {
+          var a = t.createElement("div");
+          a.className = "heart", s.push({
+            el: a,
+            x: e.clientX - 5,
+            y: e.clientY - 5,
+            scale: 1,
+            alpha: 1,
+            color: c()
+          }), t.body.appendChild(a)
+        }
+
+        function i(e) {
+          var a = t.createElement("style");
+          a.type = "text/css";
+          try {
+            a.appendChild(t.createTextNode(e))
+          } catch (t) {
+            a.styleSheet.cssText = e
+          }
+          t.getElementsByTagName("head")[0].appendChild(a)
+        }
+
+        function c() {
+          return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+        }
+
+        var s = [];
+        e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
+          setTimeout(e, 1e3 / 60)
+        }, i(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"), n(), r()
+      }(window, document);
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
